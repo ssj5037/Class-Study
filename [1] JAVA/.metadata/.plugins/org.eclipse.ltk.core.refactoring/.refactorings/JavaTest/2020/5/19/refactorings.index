@@ -1,0 +1,3 @@
+1588905893036	Extract method 'countFile'
+1588922568216	Extract method 'deleteFiles'
+1588923958982	Extract method 'fileFinder'

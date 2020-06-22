@@ -1,0 +1,126 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Random;
+
+public class MakeDummy {
+	static Random rnd;
+	
+	static {
+		rnd = new Random();
+	}
+
+	public static void main(String[] args) {
+		
+		insertTeacherScore();	//교사평가
+//		System.out.println(makescore());
+//		insertTest();			//시험
+		
+	}
+
+	private static void insertTest() {
+		//
+		Connection conn = null; // DB연결된 상태(세션)을 담은 객체
+        PreparedStatement pstm = null;  // SQL 문을 나타내는 객체
+        ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
+        
+        try {
+        	conn = DBConnection.getConnection();
+        	for (int i = 0; i < 10; i++) {
+        		
+        		double score = makescore();
+        		int osubseq;
+//        		String testfile
+        		Calendar testdate = Calendar.getInstance();
+//        		String quary = "INSERT INTO TBL_TEACHER_SCORE(SEQ, TESTFILE, TESTDATE, OSUBSEQ) VALUES (TEACHER_SCORE_SEQ.NEXTVAL,\'" + testfile + "\',\'" + testdate + "\',\'" + osubseq +"\')";
+//        		pstm = conn.prepareStatement(quary);
+//              pstm.executeUpdate();
+			}
+        	System.out.println("Insert 완료");
+        	conn.close();
+        } catch (Exception e) {
+        	e.printStackTrace();
+		}
+	}
+
+	private static void insertTeacherScore() {
+		Connection conn = null; // DB연결된 상태(세션)을 담은 객체
+        PreparedStatement pstm = null;  // SQL 문을 나타내는 객체
+        ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
+        String query;
+        
+        try {
+	        query = "SELECT SEQ, ENDDATE FROM TBL_OPEN_SUBJECT ORDER BY SEQ ASC";
+	        pstm = conn.prepareStatement(query);
+	        rs = pstm.executeQuery();
+	        
+	        ArrayList<String[]> list = new ArrayList<String[]>();
+	        
+	        while (rs.next()) {
+	        	
+	        	String[] buff = new String[2];
+	        	buff[0] = rs.getString(1);
+	        	buff[1] = rs.getString(2);
+	        	
+	        	list.add(buff);
+	        	
+	//           Calendar start = Calendar.getInstance();
+	//           String startDate = rs.getString(1);
+	//           
+	//           String dateArr[] = startDate.split(" ");
+	//           String[] date = dateArr[0].split("-");
+	//           start.set(Calendar.YEAR, Integer.parseInt(date[0]));
+	//           start.set(Calendar.MONTH, Integer.parseInt(date[1])-1);
+	//           start.set(Calendar.DATE, Integer.parseInt(date[2]));
+	//           list.add(start);
+	//           
+	//           Calendar end = Calendar.getInstance();
+	//           String endDate = rs.getString(2);
+	//           
+	//           String endDateArr[] = endDate.split(" ");
+	//           String[] date2 = endDateArr[0].split("-");
+	//           end.set(Calendar.YEAR, Integer.parseInt(date[0]));
+	//           end.set(Calendar.MONTH, Integer.parseInt(date[1])-1);
+	//           end.set(Calendar.DATE, Integer.parseInt(date[2]));
+	//           
+				}
+		    	System.out.println("Select 완료");
+		    	conn.close();
+		    } catch (Exception e) {
+		    	e.printStackTrace();
+			}
+         
+        try {
+        	conn = DBConnection.getConnection();
+        	for (int i = 0; i < 10; i++) {
+        		
+        		double score = makescore();
+        		int osubseq;
+//        		quary = "INSERT INTO TBL_TEACHER_SCORE(SEQ, SCORE, OSUBSEQ) VALUES (TEACHER_SCORE_SEQ.NEXTVAL,\'" + score + "\',\'" + osubseq +"\')";
+//        		pstm = conn.prepareStatement(quary);
+//              pstm.executeUpdate();
+			}
+        	System.out.println("Insert 완료");
+        	conn.close();
+        } catch (Exception e) {
+        	e.printStackTrace();
+		}
+       
+	}
+
+	private static double makescore() {
+		//
+		
+		double score = 0;
+		// 평점 0.0 ~ 10.0
+		// 랜덤을 5.1 ~ 10.0
+		score = (rnd.nextInt(50) + 51 ) / 10.0;
+		
+		return score;
+	}
+
+}

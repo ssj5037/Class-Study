@@ -1,0 +1,340 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Random;
+
+public class MakeDummy {
+	static Random rnd;
+	
+	static {
+		rnd = new Random();
+	}
+
+	public static void main(String[] args) {
+		
+//		insertTeacherScore();	//교사평가 -> 완료
+//		System.out.println(makescore());
+//		System.out.println(makestudentscore());
+		insertTest();			//시험 -> 완료
+//		insertPoint();			//성적 -> 완료
+		
+	}
+
+	private static void insertPoint() {
+		//
+		Connection conn = null; // DB연결된 상태(세션)을 담은 객체
+        PreparedStatement pstm = null;  // SQL 문을 나타내는 객체
+        ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
+        String query;
+        ArrayList<String[]> listOsup = new ArrayList<String[]>();
+        ArrayList<String[]> listApp = new ArrayList<String[]>();
+        
+        // select tbl_open_subject
+        try {
+        	conn = DBConnection.getConnection();
+	        query = "SELECT SEQ, ENDDATE, OCRSSEQ FROM TBL_OPEN_SUBJECT ORDER BY SEQ ASC";
+	        pstm = conn.prepareStatement(query);
+	        rs = pstm.executeQuery();
+	        
+	        while (rs.next()) {
+	        	
+	        	String[] buff = new String[3];
+	        	buff[0] = rs.getString(1);
+	        	buff[1] = rs.getString(2);
+	        	buff[2] = rs.getString(3);
+	        	
+	        	listOsup.add(buff);
+
+				}
+		    	System.out.println("Select 완료");
+		    	conn.close();
+		    } catch (Exception e) {
+		    	e.printStackTrace();
+			}
+        
+        // select tbl_apply
+        try {
+        	conn = DBConnection.getConnection();
+	        query = "SELECT SEQ, STATUS, OCRSSEQ FROM TBL_APPLY ORDER BY SEQ ASC";
+	        pstm = conn.prepareStatement(query);
+	        rs = pstm.executeQuery();
+	        
+	        while (rs.next()) {
+	        	
+	        	String[] buff = new String[2];
+	        	buff[0] = rs.getString(1);
+	        	buff[1] = rs.getString(2);
+	        	buff[2] = rs.getString(3);
+	        	
+	        	listApp.add(buff);
+
+				}
+		    	System.out.println("Select 완료");
+		    	conn.close();
+		    } catch (Exception e) {
+		    	e.printStackTrace();
+			}
+         
+        try {
+        	conn = DBConnection.getConnection();
+        	for (int i = 0; i < listOsup.size(); i++) {
+        		String osubseq = listOsup.get(i)[0];
+        		String appseq = null;
+        		
+        		Calendar end = Calendar.getInstance();
+        		String[] endDate1 = listOsup.get(i)[1].split(" ");
+        		String endDate = endDate1[0];
+	            String[] date = endDate.split("-");
+	            end.set(Calendar.YEAR, Integer.parseInt(date[0]));
+	            end.set(Calendar.MONTH, Integer.parseInt(date[1])-1);
+	            end.set(Calendar.DATE, Integer.parseInt(date[2]));
+	            
+	            Calendar now = Calendar.getInstance();
+	            
+	            // 개설과목 종료날짜가 현재 날짜보다 이전인 경우
+	            // 이미 끝난 과목
+	            if(end.getTimeInMillis() <= now.getTimeInMillis()) {
+	            	
+	            	for (int j=0; j< listApp.size(); j++) {
+	            		if(listOsup.get(i)[2] == listApp.get(j)[2]) {
+	            			
+	            			appseq = listApp.get(j)[0];
+	            			int write = makestudentscore();
+	            			int performance = makestudentscore();
+	            			int attend = makestudentscore();
+	            			query = "INSERT INTO TBL_TEACHER_SCORE(SEQ, WRITE, PERFORMANCE, ATTEND, OSUPSEQ, APPSEQ) VALUES "
+	            					+ "(SCORE_SEQ.NEXTVAL,\'" + write + "\',\'" + performance + "\',\'" + attend + "\',\'" + osubseq + "\',\'" + appseq +"\')";
+			//        		pstm = conn.prepareStatement(quary);
+			//              pstm.executeUpdate();
+	            			
+	            		}
+	            	}
+	            	
+	            } 
+	            
+	            // 개설과목 종료날짜가 현재 날짜보다 이후인 경우
+	            // 진행 중 혹은 강의가 예정된 과목
+	            else {
+	            		
+	            	for (int j=0; j< listApp.size(); j++) {
+	            		
+	            		if(listOsup.get(i)[2] == listApp.get(j)[2]) {
+
+	            			appseq = listApp.get(j)[0];
+	            			query = "INSERT INTO TBL_TEACHER_SCORE(SEQ, WRITE, PERFORMANCE, ATTEND, OSUPSEQ, APPSEQ) VALUES "
+	            					+ "(SCORE_SEQ.NEXTVAL, NULL, NULL, NULL, \'" + osubseq + "\',\'" + appseq  +"\')";
+			//        		pstm = conn.prepareStatement(quary);
+			//              pstm.executeUpdate();
+	            				            			
+	            		}
+	            	}
+	        		
+	            }
+			}
+        	System.out.println("Insert 완료");
+        	conn.close();
+        } catch (Exception e) {
+        	e.printStackTrace();
+		}
+       
+	}
+
+	private static int makestudentscore() {
+		//
+		int score = 0;
+		// 점수 0 ~ 100 / 5단위
+		// 랜덤을 50 ~ 100 사이
+		// (13 + 8) * 5
+		score = ((rnd.nextInt(11) + 10) * 5);
+		
+		return score;
+	}
+
+	private static void insertTest() {
+		//
+		Connection conn = null; // DB연결된 상태(세션)을 담은 객체
+        PreparedStatement pstm = null;  // SQL 문을 나타내는 객체
+        ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
+        String query;
+        ArrayList<String[]> list = new ArrayList<String[]>();
+        
+        try {
+        	conn = DBConnection.getConnection();
+	        query = "SELECT SEQ, ENDDATE FROM TBL_OPEN_SUBJECT ORDER BY SEQ ASC";
+	        pstm = conn.prepareStatement(query);
+	        rs = pstm.executeQuery();
+	        
+	        while (rs.next()) {
+	        	
+	        	String[] buff = new String[2];
+	        	buff[0] = rs.getString(1);
+	        	buff[1] = rs.getString(2);
+	        	
+	        	list.add(buff);
+
+				}
+		    	System.out.println("Select 완료");
+		    	conn.close();
+		    } catch (Exception e) {
+		    	e.printStackTrace();
+			}
+         
+        try {
+        	conn = DBConnection.getConnection();
+        	for (int i = 0; i < list.size(); i++) {
+        		
+        		String osubseq = list.get(i)[0];   
+        		String[] endDate1 = list.get(i)[1].split(" ");
+        		String testdate = endDate1[0];
+        		String testfile = "";
+        		
+        		Calendar end = Calendar.getInstance();
+	            String[] date = testdate.split("-");
+	            end.set(Calendar.YEAR, Integer.parseInt(date[0]));
+	            end.set(Calendar.MONTH, Integer.parseInt(date[1])-1);
+	            end.set(Calendar.DATE, Integer.parseInt(date[2]));
+	            
+	            Calendar now = Calendar.getInstance();
+	            
+	            // 현재보다 이전의 날짜는 testfile에 있음으로 표시
+	            if(end.getTimeInMillis() <= now.getTimeInMillis()) {testfile = "있음";}
+        		
+        		query = "INSERT INTO TBL_TEST(SEQ, TESTFILE, TESTDATE, OSUBSEQ) VALUES (TEACHER_SCORE_SEQ.NEXTVAL,\'" + testfile + "\',\'" + testdate + "\'," + osubseq +")";
+        		pstm = conn.prepareStatement(query);
+                pstm.executeUpdate();
+			}
+        	System.out.println("Insert 완료");
+        	conn.close();
+        } catch (Exception e) {
+        	e.printStackTrace();
+		}
+	}
+
+	private static void insertTeacherScore() {
+		Connection conn = null; // DB연결된 상태(세션)을 담은 객체
+        PreparedStatement pstm = null;  // SQL 문을 나타내는 객체
+        ResultSet rs = null;  // 쿼리문을 날린것에 대한 반환값을 담을 객체
+        String query;
+        ArrayList<String[]> listOsup = new ArrayList<String[]>();
+        ArrayList<String[]> listApp = new ArrayList<String[]>();
+        
+        // select tbl_open_subject
+        try {
+        	conn = DBConnection.getConnection();
+	        query = "SELECT SEQ, ENDDATE, OCRSSEQ FROM TBL_OPEN_SUBJECT ORDER BY SEQ ASC";
+	        pstm = conn.prepareStatement(query);
+	        rs = pstm.executeQuery();
+	        
+	        while (rs.next()) {
+	        	
+	        	String[] buff = new String[3];
+	        	buff[0] = rs.getString(1);
+	        	buff[1] = rs.getString(2);
+	        	buff[2] = rs.getString(3);
+	        	
+	        	listOsup.add(buff);
+
+				}
+		    	System.out.println("Select 완료");
+		    	conn.close();
+		    } catch (Exception e) {
+		    	e.printStackTrace();
+			}
+        
+        // select tbl_apply
+        try {
+        	conn = DBConnection.getConnection();
+	        query = "SELECT SEQ, STATUS, OCRSSEQ FROM TBL_APPLY ORDER BY SEQ ASC";
+	        pstm = conn.prepareStatement(query);
+	        rs = pstm.executeQuery();
+	        
+	        while (rs.next()) {
+	        	
+	        	String[] buff = new String[3];
+	        	buff[0] = rs.getString(1);
+	        	buff[1] = rs.getString(2);
+	        	buff[2] = rs.getString(3);
+	        	
+	        	listApp.add(buff);
+
+				}
+		    	System.out.println("Select 완료");
+		    	conn.close();
+		    } catch (Exception e) {
+		    	e.printStackTrace();
+			}
+         
+        try {
+        	conn = DBConnection.getConnection();
+        	for (int i = 0; i < listOsup.size(); i++) {
+        		String osubseq = listOsup.get(i)[0];
+        		String appseq = null;
+        		
+        		Calendar end = Calendar.getInstance();
+        		String[] endDate1 = listOsup.get(i)[1].split(" ");
+        		String endDate = endDate1[0];
+	            String[] date = endDate.split("-");
+	            end.set(Calendar.YEAR, Integer.parseInt(date[0]));
+	            end.set(Calendar.MONTH, Integer.parseInt(date[1])-1);
+	            end.set(Calendar.DATE, Integer.parseInt(date[2]));
+	            
+	            Calendar now = Calendar.getInstance();
+	            
+	            if(end.getTimeInMillis() <= now.getTimeInMillis()) {
+	            	
+	            	for (int j=0; j< listApp.size(); j++) {
+	            		System.out.println(listOsup.get(i)[2]);
+	            		System.out.println(listApp.get(i)[2]);
+	            		if(listOsup.get(i)[2] == listApp.get(j)[2]) {
+	            			
+	            			appseq = listApp.get(j)[0];
+	            			int score = makescore();
+	            			query = "INSERT INTO TBL_TEACHER_SCORE(SEQ, OSUBSEQ, APPSEQ, SCORE) VALUES (TEACHER_SCORE_SEQ.NEXTVAL,\'" + osubseq + "\',\'" + appseq + "\',\'" + score +"\')";
+	            			System.out.println(query);
+//			        		pstm = conn.prepareStatement(query);
+//			        		pstm.executeUpdate();
+	            			
+	            		}
+	            	}
+	            	
+	            } else {
+	            		
+	            	for (int j=0; j< listApp.size(); j++) {
+	            		
+	            		if(listOsup.get(i)[2] == listApp.get(j)[2]) {
+
+	            			appseq = listApp.get(j)[0];
+	            			query = "INSERT INTO TBL_TEACHER_SCORE(SEQ, OSUBSEQ, APPSEQ, SCORE) VALUES (TEACHER_SCORE_SEQ.NEXTVAL, \'" + osubseq + "\',\'" + appseq + "\', NULL)";
+	            			System.out.println(query);
+//			        		pstm = conn.prepareStatement(query);
+//			        		pstm.executeUpdate();
+	            				            			
+	            		}
+	            	}
+	        		
+	            }
+			}
+        	System.out.println("Insert 완료");
+        	conn.close();
+        } catch (Exception e) {
+        	e.printStackTrace();
+		}
+       
+	}
+
+	private static int makescore() {
+		//
+		
+		int score = 0;
+		// 평점 0 ~ 10
+		// 랜덤을 5 ~ 10
+		score = (rnd.nextInt(6) + 5);
+		
+		return score;
+	}
+
+}
