@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #p1:hover {
+            /* text-shadow: h-shadow v-shadow blur color; */
+            text-shadow: 3px 3px 2px #999;
+        }
+        #p2 {
+            border: 1px solid white;
+        }
+        #p2:hover {
+            box-shadow: 3px 3px 2px #999;
+            border: 1px solid #777;
+        }
+
+        .icon:hover {
+            box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.342);
+            /* margin-top: -3px; */
+            transform: translate(0px, -5px);
+        }
+
+        /* #list li {
+            border: 1px solid white;
+        } */
+        #list li:hover {
+            /* color: red; */
+            /* border: 10px solid red; */
+            outline: 10px solid red;
+            /* outline => 보더로 인한 외곽 뒤틀림을 방지하기 위해 쓰는 것이다. 평소에는 쓸 일이 잘 없음. */
+        }
+
+        #box1, #box2 {
+            border: 1px solid black;
+            width: 300px;
+            /* height: 20px; */
+            overflow: hidden;
+            white-space: nowrap;
+            margin-bottom: 50px;
+        }
+        /* 
+        width, overflow, white-space, text-overflow: ellipsis
+        이 네 개의 설정을 해주면 말줄임표가 생긴다.
+         */
+        #box1 { text-overflow: clip;}
+        #box2 { text-overflow: ellipsis;}
+    </style>
+</head>
+<body>
+    <!-- ex32_shadow.html -->
+    <p id="p1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis accusamus reiciendis totam vitae, at odit numquam blanditiis beatae suscipit qui fugit porro sed vel, eveniet ullam, dolorum ea commodi laboriosam.</p>
+    <p id="p2">Quam impedit voluptates facilis, itaque explicabo mollitia iste distinctio natus deserunt, quis recusandae quisquam asperiores eos commodi suscipit modi nam quod amet veniam eveniet minima magni. Doloribus a quam omnis?</p>
+    <p id="p3">Alias ut eos, numquam magnam veritatis temporibus nam hic quas corporis voluptatum eius eum explicabo sunt at. At cum, sunt iusto, voluptas explicabo nostrum officia temporibus nam consectetur officiis impedit!</p>
+
+    <hr>
+
+    <img src="../images/rect_icon01.png" alt="" class="icon">
+    <img src="../images/rect_icon02.png" alt="" class="icon">
+    <img src="../images/rect_icon03.png" alt="" class="icon">
+    <img src="../images/rect_icon04.png" alt="" class="icon">
+    <img src="../images/rect_icon05.png" alt="" class="icon">
+
+    <hr>
+
+    <h1>오늘의 할일</h1>
+
+    <ul id="list">
+        <li>빨리 집에가기</li>
+        <li>밥먹기</li>
+        <li>잠자기</li>
+        <li>쪼금 공부하기</li>
+    </ul>
+
+    <hr>
+
+    <div id="box1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, saepe?</div>
+    <div id="box2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, molestias!</div>
+</body>
+</html>

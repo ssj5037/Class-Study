@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200&display=swap" rel="stylesheet">
+    <style>
+
+        /*
+
+        웹 폰트, Web Font
+        1. 예전 방식
+            - *.eof
+        2. CSS3 웹폰트
+            - 서버로부터 폰트를 다운받아 현재 사이트에 접속 중에만 임시로 사용
+
+        */
+
+        /* 웹 폰트 선언 */
+        @font-face {
+            font-family: 'BM'; /* 내가 정의하는 폰트 명 */
+            src: url(../images/BMJUA_ttf.ttf)
+        }
+
+        @font-face { font-family: 'MapoFlowerIsland'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff') format('woff'); font-weight: normal; font-style: normal; }
+        p {
+            font-family: 'MapoFlowerIsland';
+            letter-spacing: -1px;
+        }
+    </style>
+</head>
+<body>
+    <!-- ex33_font.html -->
+    <p>
+        25일(현지 시각) 미 자유아시아방송(RFA)에 따르면, 싱가포르에 본부를 둔 민간 사이버 보안업체 사이퍼마(Cyfirma)의 미국 지사는 최근 '북한 라자루스(Lazarus) 조직의 전세계 코로나19 피싱 캠페인'이라는 제목의 보고서를 공개했다.
+
+사이퍼마는 보고서에서 "북한 해킹 조직으로 알려진 라자루스가 인터넷 메일을 통해 피해자의 개인 정보를 알아내, 돈이나 정보를 빼돌리며 사기를 치는 피싱(phishing) 공격을 하고 있다"고 밝혔다. 특히 이 보고서는 "라자루스가 지난 1~16일 미국과 한국, 일본, 영국, 인도, 싱가포르 등 6국에서 개인, 기업 등 약 500만명을 대상으로 '코로나 지원금을 주겠다'는 메일을 보낸 뒤 악성코드와 피싱 사이트 링크를 심었다"며 "이는 조직적인 사이버 공격을 감행한 것"이라고 했다.
+
+북한 기술정찰국 소속으로 전해지는 라자루스는 2014년 미국 소니픽처스를 마비시킨 해킹과 2017년 전 세계를 강타한 워너크라이(Wan naCry) 공격을 주도한 것으로 알려졌다.
+
+이 보고서에 따르면 라자루스는 세계 곳곳의 정부가 최근 코로나 팬데믹(대유행) 국면에서 경기부양책의 일환으로 코로나 지원금을 지급하고 있는 상황을 노렸다. 해커들은 정부 기관을 사칭해 코로나 지원금 관련 내용을 미끼로 넣은 뒤 피싱 사이트 링크를 이메일로 보냈다. 피해자가 마치 정부 기관이 보낸 메일로 착각해 피싱 사이트에 비밀번호 등 개인정보를 입력하도록 하는 것이다.
+
+보고서는 해커들이 한국과 미국의 정부 기관을 사칭해 만든 가짜 계정으로 보낸 이메일 내용도 공개했다. 여기엔 해커들이 한국 이메일 계정 약 70만개에 긴급재난지원금 100만원을, 미국 이메일 계정 약 140만개에 1000달러를 주겠다는 '미끼' 정보가 들어있다.
+    </p>
+</body>
+</html>
