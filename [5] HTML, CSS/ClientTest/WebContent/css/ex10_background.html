@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    
+            /*
+            
+            CSS 색상 표현법
+            1. Color Name: red, blue ...
+            2. RGB Color(HEX) : #FFFFFF
+            3. RGB Color(DEC) : rgb(255, 0, 128)
+            4. RGBA Color(DEC) : rgba(255, 0, 0, 1) - A(alpha channel - 투명도, 0~1)
+            
+            */
+
+        /* body {
+            background-color: yellow;
+        } */
+
+        #box1 {
+            /* background-color: darksalmon; */
+            /* background-color: #FFF588; */
+            /* background-color: rgb(255, 0, 128); */
+            background-color: rgb(255, 0, 0, .3);
+            /* background-image: url(../images/catty01.png); */
+        }
+
+        /* 
+
+            position
+            - x : left, center, top
+            - y : top, center, bottom
+            body의 크기는 문장의 끝
+        */
+        body {
+            background-image: url(../images/catty01.png);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+        }
+
+        #txt1, #btn1 {
+            /* 컨트롤에도 배경색을 지정할 수 있다. */
+            /* background-color: yellow; */
+            background-image: url(../images/catty01.png);
+        }
+        
+        #btn1 {
+            background-image: url(../images/catty01.png);
+            background-repeat: no-repeat;
+            background-position: center center;
+            width: 150px;
+            height: 150px;
+        }
+
+        #search {
+            background-image: url(../images/hangame.png);
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        /* 가상(의사) 클래스 */
+        #search:focus {
+            background-image: url();
+        }
+
+        #btnSearch {
+            background-image: url(../images/bullet04.png);
+            background-repeat: no-repeat;
+            background-position: 5px center;
+        }
+    </style>
+</head>
+<body>
+        <!-- 
+        ex10_background.html
+
+        HTML의 서식
+        - 특정 태그만 특정 서식을 가진다.
+
+        CSS의 서식
+        - 모든 태그가 모든 서식을 가진다.
+
+        배경 CSS
+        1. 배경색
+            - background-color
+        2. 배경 이미지
+            - background-image
+     
+    
+        HTML은 태그가 제한된 속성만 사용할 수 있었음.
+        <div 배경색(X) 글자색(X) 크기지정(X)></div>
+        <div id="" class="" title=""></div>
+        <body bgcolor=""></body>
+        <font color=""></font>
+        <img width="" height=""> 
+    
+        <!--
+        CSS는 모든 태그에서 모든 속성을 전부 사용할 수 있음. 
+        <img style="width: 100px;">
+        <div style="width: 100px;"></div>
+        -->
+
+    <input type="text" id="search"> 
+    <input type="button" value="    검색 " id="btnSearch">
+    <button value="button" id="btnSearch2">
+        <img src="../images/bullet04.png"> 검색
+    </button>
+
+    <hr>
+
+    <input type="text" id="txt1">
+    <br><br>
+    <input type="button" id="btn1" value="버튼">
+    
+    <hr>
+    
+    <div id="box1">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit placeat cum a, et labore exercitationem sed! Consectetur perspiciatis fuga aliquid quam harum nesciunt voluptatum natus repellendus nihil. Non, similique veritatis!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit placeat cum a, et labore exercitationem sed! Consectetur perspiciatis fuga aliquid quam harum nesciunt voluptatum natus repellendus nihil. Non, similique veritatis!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit placeat cum a, et labore exercitationem sed! Consectetur perspiciatis fuga aliquid quam harum nesciunt voluptatum natus repellendus nihil. Non, similique veritatis!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit placeat cum a, et labore exercitationem sed! Consectetur perspiciatis fuga aliquid quam harum nesciunt voluptatum natus repellendus nihil. Non, similique veritatis!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit placeat cum a, et labore exercitationem sed! Consectetur perspiciatis fuga aliquid quam harum nesciunt voluptatum natus repellendus nihil. Non, similique veritatis!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit placeat cum a, et labore exercitationem sed! Consectetur perspiciatis fuga aliquid quam harum nesciunt voluptatum natus repellendus nihil. Non, similique veritatis!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit placeat cum a, et labore exercitationem sed! Consectetur perspiciatis fuga aliquid quam harum nesciunt voluptatum natus repellendus nihil. Non, similique veritatis!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit placeat cum a, et labore exercitationem sed! Consectetur perspiciatis fuga aliquid quam harum nesciunt voluptatum natus repellendus nihil. Non, similique veritatis!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit placeat cum a, et labore exercitationem sed! Consectetur perspiciatis fuga aliquid quam harum nesciunt voluptatum natus repellendus nihil. Non, similique veritatis!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit placeat cum a, et labore exercitationem sed! Consectetur perspiciatis fuga aliquid quam harum nesciunt voluptatum natus repellendus nihil. Non, similique veritatis!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit placeat cum a, et labore exercitationem sed! Consectetur perspiciatis fuga aliquid quam harum nesciunt voluptatum natus repellendus nihil. Non, similique veritatis!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit placeat cum a, et labore exercitationem sed! Consectetur perspiciatis fuga aliquid quam harum nesciunt voluptatum natus repellendus nihil. Non, similique veritatis!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit placeat cum a, et labore exercitationem sed! Consectetur perspiciatis fuga aliquid quam harum nesciunt voluptatum natus repellendus nihil. Non, similique veritatis!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit placeat cum a, et labore exercitationem sed! Consectetur perspiciatis fuga aliquid quam harum nesciunt voluptatum natus repellendus nihil. Non, similique veritatis!</div>
+
+
+</body>
+</html>

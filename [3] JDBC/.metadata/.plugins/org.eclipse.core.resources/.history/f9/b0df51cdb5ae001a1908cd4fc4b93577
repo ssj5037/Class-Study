@@ -1,0 +1,235 @@
+package com.test.project;
+
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import com.test.jdbc.DBUtil;
+
+public class Admin_Student {
+
+	static Scanner scan = new Scanner(System.in);
+	static List<String> stuList = new ArrayList<String>();
+	
+	public static void main(String[] args) {
+		
+		//AddStudent();
+		//ShowTotalStudent();
+		StudentInfoMenu();
+		
+	}
+
+	private static void StudentInfoMenu() {
+		//교육생전체 조회 (페이징) > 검색
+
+		boolean loop = true;
+		SaveTotalStudent();
+
+		while(loop) {
+			
+			System.out.println("     [이름]    [주민번호]  [전화번호]\t[등록일]    [수강횟수]");
+			Pagingfile.page(Pagingfile.save(stuList));
+			
+			System.out.println();
+			System.out.println("학생 정보 조회");
+			System.out.println("==========================");
+			System.out.println("1. 학생 번호 입력");
+			System.out.println("2. 아이디로 검색");
+			System.out.println("3. 이름으로 검색");
+			System.out.println("0. 뒤로가기");
+			System.out.println("==========================");
+			System.out.print("번호 입력 : ");
+			String num = scan.nextLine();
+			System.out.println();
+			
+			if (num.equals("0")) {
+				break;
+				//뒤로가기
+			} else if (num.equals("1")) {
+				//학생 번호 입력 > 입력한 학생 정보 출력
+				String stuNum = null;
+				while(true) {
+					System.out.println("==========================");
+					System.out.print("번호 입력 : ");
+					stuNum = scan.nextLine();
+					if(Integer.parseInt(stuNum) > 0 && Integer.parseInt(stuNum) <= stuList.size()) {
+						ShowStuSelectedNum(stuNum);
+						break;
+					} else {
+						System.out.println("잘못된 번호를 입력하였습니다.");
+						System.out.println();
+					}
+				}
+			} else if (num.equals("2")) {
+				//아이디로 검색
+				SearchStuFromId();
+			} else if (num.equals("3")) {
+				//이름으로 검색
+				SearchStuFromName();
+			} else {
+				System.out.println("잘못된 번호를 입력하였습니다.");
+				System.out.println();
+			}
+		}
+		
+	}//StudentInfoMenu
+
+	private static void SearchStuFromName() {
+		//이름으로 검색
+		
+	}//SearchStuFromName
+
+	private static void SearchStuFromId() {
+		//아이디로 검색
+		
+	}//SearchStuFromId
+
+	private static void ShowStuSelectedNum(String stuNum) {
+		//학생 번호 입력 > 입력한 학생 정보 출력
+		Connection conn = null;
+		Statement stat = null;
+		ResultSet rs = null;
+		DBUtil util = new DBUtil();
+		
+		try {
+			
+			conn = util.open();
+			stat = conn.createStatement();
+
+			String sql = String.format("select * from vw_ShowStudentInfo where stuseq = %d", stuNum);
+			
+			rs = stat.executeQuery(sql);
+			
+			if (rs.next()) {
+				
+				System.out.printf("이름 : %s\n"
+						+ "수강 과정 이름 : %s\n"
+						+ "수강 과정 기간 : %s\n"
+						+ "강의실 : %s\n"
+						+ "수료 및 중도탈락 여부 : %s\n"
+						+ "수료 및 중도탈락 날짜 : %s\n"
+						, rs.getString("stuName")
+						, rs.getString("courseName")
+						, rs.getString("startdate") + " ~ " + rs.getString("enddate")
+						, rs.getString("room")
+						, rs.getString("status")
+						, rs.getString("statusdate"));
+			}
+			
+			stat.close();
+			conn.close();
+			
+			System.out.println("=============================================================");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Fail: Select vw_ShowTotalTeacher ");
+		}
+	}//ShowStuSelectedNum
+
+	private static void SaveTotalStudent() {
+		//전체 학생 조회
+		Connection conn = null;
+		Statement stat = null;
+		ResultSet rs = null;
+		DBUtil util = new DBUtil();
+		
+		try {
+			
+			conn = util.open();
+			stat = conn.createStatement();
+
+			String sql = String.format("select seq, name, ssn, tel, to_char(regdate, 'yyyy-mm-dd') regdate,"
+					+ " cnt from vw_ShowTotalStudent");
+			
+			rs = stat.executeQuery(sql);
+			
+			while(rs.next()) {
+				stuList.add(String.format("%s,%s,%s,%s,%s"
+						, rs.getString("name")
+						, rs.getString("ssn")
+						, rs.getString("tel")
+						, rs.getString("regdate")
+						, rs.getString("cnt")));
+			}
+			
+			stat.close();
+			conn.close();
+			
+			System.out.println("=============================================================");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Fail: Select vw_ShowTotalStudent ");
+		}
+	}//ShowTotalStudent
+
+	private static void AddStudent() {
+		//학생등록
+		Connection conn = null;
+		CallableStatement stat = null;
+		DBUtil util = new DBUtil();
+
+		try {
+
+			System.out.println("새 학생 정보 등록");
+			System.out.print("학생 이름: ");
+			String name = scan.nextLine();
+
+			System.out.print("학생 아이디: ");
+			String id = scan.nextLine();
+
+			System.out.print("학생 주민등록번호: ");
+			String ssn = scan.nextLine();
+
+			System.out.print("학생 전화번호: ");
+			String tel = scan.nextLine();
+
+			System.out.println("==================================");
+
+			System.out.println();
+
+			System.out.print("> "+ name + " 학생 정보를 등록하시겠습니까?(y/n)");
+			String insert = scan.nextLine();
+			
+			if (insert.toLowerCase().equals("y")) {
+				
+				String sql = "{ call proc_AddStudent(?,?,?,?) }";
+				
+				conn = util.open();
+				stat = conn.prepareCall(sql);
+				
+				stat.setString(1, name);
+				stat.setString(2, id);
+				stat.setString(3, ssn);
+				stat.setString(4, tel);
+				
+				stat.executeUpdate();
+				
+//				System.out.println("Success: Insert tbl_student");
+				System.out.println("등록을 완료하였습니다.");
+				
+				stat.close();
+				conn.close();
+				
+				
+			} else if (insert.toLowerCase().equals("n")) {
+				System.out.println("등록을 중지합니다.");
+			} else {
+				System.out.println("잘못된 번호를 입력하였습니다.");
+			}
+			System.out.println("이전 페이지로 돌아가겠습니다.");
+			System.out.println("계속하시려면 엔터를 눌러주세요.");
+			scan.nextLine();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Fail: Insert tbl_student");
+		}
+	}//AddStudent
+	
+}

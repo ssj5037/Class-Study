@@ -1,0 +1,83 @@
+package com.test.project;
+
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.util.Scanner;
+
+import com.test.jdbc.DBUtil;
+
+import oracle.jdbc.OracleTypes;
+
+public class Admin_Attend {
+	
+	static Connection conn = null;
+	static CallableStatement stat = null;
+	static ResultSet rs = null;
+	static DBUtil util = new DBUtil();
+	static Scanner scan = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+		
+		AttendManagementMenu();		//3-5. 출결관리
+		
+	}
+
+	private static void AttendManagementMenu() {
+		//출결관리 메뉴
+		while (true) {
+			System.out.println("==========================");
+			System.out.println("1. 관리자");
+			System.out.println("2. 교사");
+			System.out.println("3. 학생");
+			System.out.println("0. 뒤로가기");
+			System.out.println("==========================");
+			System.out.print("번호 입력 : ");
+			String num = scan.nextLine();
+			System.out.println();
+			
+			if (num.equals("1")) {
+				//관리자
+				AttendAdmin();
+			} else if (num.equals("2")) {
+				//교사
+				AttendTeacher();
+			} else if (num.equals("3")) {
+				//학생
+				AttendStudent();
+			} else if (num.equals("0")) {
+				//뒤로가기
+				break;
+			} else {
+				System.out.println("잘못된 번호를 입력하였습니다.");
+				System.out.println();
+			}
+		}
+	}//AttendManagementMenu
+
+	private static void AttendStudent() {
+		//학생 출결 조회
+		String sql = "{ call PROC_STUDENT_ATTEND(?, ?) }";
+		
+		conn = util.open();
+		stat = conn.prepareCall(sql);
+		
+		stat.setInt(1, stuseq);
+		stat.registerOutParameter(2, OracleTypes.CURSOR);
+		
+		stat.executeQuery();
+		
+		rs = (ResultSet)stat.getObject(2);
+	}//AttendStudent
+
+	private static void AttendTeacher() {
+		//교사 출결 조회
+		
+	}//AttendTeacher
+
+	private static void AttendAdmin() {
+		//관리자 출결 조회 + 기록
+		
+	}//AttendAdmin
+	
+}

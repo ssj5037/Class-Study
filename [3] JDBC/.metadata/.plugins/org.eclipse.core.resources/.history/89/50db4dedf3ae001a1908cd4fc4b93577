@@ -1,0 +1,43 @@
+package com.test.project;
+
+import java.util.Scanner;
+
+public class Admin_Attend {
+
+	static Scanner scan = new Scanner(System.in);
+	public static void main(String[] args) {
+		
+		AttendManagementMenu();		//3-5. 출결관리
+		
+	}
+
+	private static void AttendManagementMenu() {
+		//출결관리 메뉴
+		while (true) {
+			System.out.println("==========================");
+			System.out.println("1. 관리자");
+			System.out.println("2. 교사");
+			System.out.println("3. 학생");
+			System.out.println("0. 뒤로가기");
+			System.out.println("==========================");
+			System.out.print("번호 입력 : ");
+			String num = scan.nextLine();
+			System.out.println();
+			
+			if (num.equals("1")) {
+				//과정관리
+			} else if (num.equals("2")) {
+				//과목관리
+			} else if (num.equals("3")) {
+				//교재관리
+			} else if (num.equals("0")) {
+				//뒤로가기
+				break;
+			} else {
+				System.out.println("잘못된 번호를 입력하였습니다.");
+				System.out.println();
+			}
+		}
+	}//AttendManagementMenu
+	
+}

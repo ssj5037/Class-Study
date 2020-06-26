@@ -1,0 +1,11 @@
+<!DOCTYPE html(루트태그) PUBLIC(공인/비공인) "-//W3C(단체명)//DTD HTML 4.01 Transitional(문법형식)//EN(언어)" "http://www.w3.org/TR/html4/loose.dtd"(상세정보위치)>
+// 브라우저에게 알려주는 내부 정보
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

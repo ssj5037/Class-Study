@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #stock {
+            border-top: 1px solid gray;
+            border-bottom: 1px solid gray;
+            /* border: 0px solid red; */
+            width: 340px;
+            font-size: 13px;
+            font-family: '돋움';
+            color: #555;
+            padding: 10px 3px;
+        }
+
+        #stock .item {
+            /* border: 1px solid blue; */
+            height: 21px;
+            /* margin-bottom: 5px; */
+            margin-top: 5px;
+        }
+
+        #stock .company {
+            /* border: 1px solid green; */
+            display: inline-block;
+            width: 110px;
+            font-weight: bold;
+            letter-spacing: -1px;
+        }
+
+        #stock .item .plus {
+            /* border: 1px solid green; */
+            text-align: right;
+            display: inline-block;
+            width: 70px;
+            color: red;
+        }
+
+        #stock .item .minus {
+            /* border: 1px solid green; */
+            text-align: right;
+            display: inline-block;
+            width: 70px;
+            color: blue;
+        }
+        
+        #stock .item .date {
+            /* border: 1px solid green; */
+            text-align: center;
+            display: inline-block;
+            width: 70px;
+            color: #777;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="stock">
+        <div class="item">
+            <span class="company">HB테크놀러지</span>
+            <span class="plus">+17.42%</span>
+            <span class="plus">+21.26%</span>
+            <span class="date">16.10.20</span>
+        </div>
+        <div class="item">
+            <span class="company">우리산업</span>
+            <span class="plus">+17.38%</span>
+            <span class="minus">-18.10%</span>
+            <span class="date">16.10.12</span>
+        </div>
+        <div class="item">
+            <span class="company">AP시스템</span>
+            <span class="plus">+14.81%</span>
+            <span class="plus">+13.20%</span>
+            <span class="date">16.12.07</span>
+        </div>
+        <div class="item">
+            <span class="company">유니트론텍</span>
+            <span class="plus">+13.47%</span>
+            <span class="minus">-5.90%</span>
+            <span class="date">16.09.26</span>
+        </div>
+        <div class="item">
+            <span class="company">심텍</span>
+            <span class="plus">+12.47%</span>
+            <span class="plus">+40.75%</span>
+            <span class="date">16.10.24</span>
+        </div>
+    </div>
+</body>
+</html>

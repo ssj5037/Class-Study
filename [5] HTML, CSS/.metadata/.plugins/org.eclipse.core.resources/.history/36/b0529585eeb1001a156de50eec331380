@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- 
+	
+		Ex13_image.html
+		
+		<img>, Image
+		- 이미지를 출력하는 태그
+		- 단독 태그
+		- 인라인 태그
+		
+		img.src 속성
+		- 이미지 URL(절대경로 or 상대경로)
+	
+	 -->
+	 
+	 <h1>유채꽃밭</h1>
+	 <img src="./images/유채꽃밭사람.jpg">
+	 
+	 
+	 <h1>고양이</h1>
+	 <img src="./images/cat01.jpg">
+	 
+	 
+</body>
+</html>

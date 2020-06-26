@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #content {
+            border: 1px solid #eee;
+            padding: 23px 0px;
+            width: 590px;
+            height: 170px;
+            font-family: 굴림;
+        }
+
+        #content header {
+            font-size: 12px;
+            font-weight: bold;
+            padding-bottom: 17px;
+            padding-left: 24px;
+        }
+
+        #content .item {
+            border-right: 1px solid #eee;
+            padding: 0px 2px;
+            width: 88px;
+            float: left;
+            padding-left: 26px;
+        }
+
+        #content #today span:first-child {font-size: 12px; padding-left: 4px; letter-spacing: -1px;}
+        #content .item span:first-child {font-size: 12px; padding-left: 13px;}
+        #content .item #now {
+            font-size: 11px;
+            background-color: #00c63c;
+            color: white;
+            font-weight: bold;
+            padding: 3.5px 7px;
+            border-radius: 45px;
+            letter-spacing: -1px;
+        }
+        #content .item .time {
+            font-size: 11px;
+            color: #999;
+        }
+
+        #content .item .topweather {padding-top: 16px;}
+        #content .item .bottomweather {padding-top: 9px;}
+
+        #content .item img {
+            width: 30px;
+            height: 30px;
+            /* padding-top: 5px; */
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        #content .item .large {
+            font-size: 12px;
+            color: #41b5ee;
+            font-family: 돋움;
+            padding-left: 7px;
+        }
+        #content .item .small {
+            font-size: 12px;
+            color: #999;
+            font-family: 돋움;
+            padding-left: 7px;
+        }
+
+        #content .item div:last-child {
+            font-size: 12px;
+            font-weight: bold;
+            font-family: 돋움;
+            text-align: left;
+            padding-top: 16px;
+            padding-left: 7px;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <header>주간날씨</header>
+        <div>
+            <div class="item" id="today">
+                <div>
+                    <span>목</span>
+                    <span id="now">오늘</span>
+                </div>
+                <div class="topweather">
+                    <img src="../images/icon_wt_22.svg">
+                    <span class="large">70%</span>
+                </div>
+                <div class="bottomweather">
+                    <img src="../images/icon_wt_22.svg">
+                    <span class="large">60%</span>
+                </div>
+                <div>21˚/25˚</div>
+            </div>
+            <div class="item">
+                <div>
+                    <span>금</span>
+                    <span class="time">내일</span>
+                </div>
+                <div class="topweather">
+                    <img src="../images/icon_wt_22.svg">
+                    <span class="large">60%</span>
+                </div>
+                <div class="bottomweather">
+                    <img src="../images/icon_wt_07.svg">
+                    <span class="small">30%</span>
+                </div>
+                <div>21˚/28˚</div>
+            </div>
+            <div class="item">
+                <div>
+                    <span>토</span>
+                    <span class="time">모레</span>
+                </div>
+                <div class="topweather">
+                    <img src="../images/icon_wt_07.svg">
+                    <span class="small">30%</span>
+                </div>
+                <div class="bottomweather">
+                    <img src="../images/icon_wt_05.svg">
+                    <span class="small">30%</span>
+                </div>
+                <div>21˚/29˚</div>
+            </div>
+            <div class="item">
+                <div>
+                    <span>일</span>
+                    <span class="time">6.28.</span>
+                </div>
+                <div class="topweather">
+                    <img src="../images/icon_wt_05.svg">
+                    <span class="small">3%</span>
+                </div>
+                <div class="bottomweather">
+                    <img src="../images/icon_wt_09.svg">
+                    <span class="large">60%</span>
+                </div>
+                <div>21˚/31˚</div>
+            </div>
+            <div class="item">
+                <div>
+                    <span>월</span>
+                    <span class="time">6.29.</span>
+                </div>
+                <div class="topweather">
+                    <img src="../images/icon_wt_05.svg">
+                    <span class="large">30%</span>
+                </div>
+                <div class="bottomweather">
+                    <img src="../images/icon_wt_09.svg">
+                    <span class="small">60%</span>
+                </div>
+                <div>21˚/29˚</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

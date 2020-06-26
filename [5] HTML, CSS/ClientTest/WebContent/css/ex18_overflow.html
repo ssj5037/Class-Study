@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <style>
+        #box1 {
+            /* width: 100%;
+            height: auto; */
+
+            /* 객체의 크기 지정 : width는 필수 지정 height는 상황에 따라*/
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+
+            /* auto, scroll, hidden, visible */
+            overflow: scroll;
+            margin-bottom: 70px;
+        }
+
+        /* 
+            위 아래 콘텐츠 모두 마진이 있는 경우,
+            둘의 크기가 상쇄 되어서 크기가 더 큰 마진만 적용된다.
+            크기가 합쳐지는 것이 아님!!
+        */
+
+        #tbl1 {
+            border: 1px solid black;
+            border-collapse: collapse;
+            width: 200px;
+            height: 200px;
+            margin: 50px 0px;
+        }
+
+        #tbl1 td {
+            border: 1px solid black;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+<body>
+    <!-- ex18_overflow.html -->
+    <div id="box1">상자입니다.상자입니다.상자입니다.상자입니다.상자입니다.상자입니다.</div>
+
+    <!-- 
+        표는 오버플로우가 되도 테두리 밖으로 빠져나가는 현상이 일어나지 않는다. 예외사항.. 
+        오버플로우시 스크롤 적용도 안됨.
+        <td><div></div><td> : div 태그를 td 태그의 자식으로 두고 div 태그를 통제하면 오버플로우시 스크롤링을 할 수 있다.
+    -->
+    <table id="tbl1">
+        <tr>
+            <td>1</td>
+            <td><div style="border: 1px solid red; width: 100px; height:
+            100px; overflow-y: auto;">홍길동입니다.홍길동입니다.홍길동입니다.홍길동입니다.홍길동입니다.홍길동입니다.홍길동입니다.홍길동입니다.홍길동입니다.홍길동입니다.홍길동입니다.홍길동입니다.홍길동입니다.홍길동입니다.홍길동입니다.홍길동입니다.홍길동입니다.홍길동입니다.</div></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+    </table>
+
+
+</body>
+</html>

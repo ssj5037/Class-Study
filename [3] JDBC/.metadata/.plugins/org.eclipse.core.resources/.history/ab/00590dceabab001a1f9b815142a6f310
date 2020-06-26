@@ -1,0 +1,718 @@
+package com.test.project;
+
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+import com.test.jdbc.DBUtil;
+
+import oracle.jdbc.OracleTypes;
+
+public class Admin {
+
+	public static void main(String[] args) {
+		
+		//loginAdmin(); //A001
+		//AddAdmin(); //A002
+		
+		// --- A006까지 ---
+		//AddCourse();
+		//AddSubject();
+		//AddClassroom();
+		//AddBook();
+		
+		//ShowCourse();
+		//ShowSubject();
+		//ShowClassroom();
+		//ShowBook();
+		
+		//UpdateCourse();
+		//UpdateSubject();
+		//UpdateClassroom();
+		//UpdateBook();
+		
+		DeleteCourse();
+	}
+
+	private static void DeleteCourse() {
+		//과정삭제
+		
+	}//DeleteCourse
+
+	private static void UpdateBook() {
+		//교재수정
+		Connection conn = null;
+		CallableStatement stat = null;
+		Scanner scan = new Scanner(System.in);
+		DBUtil util = new DBUtil();
+		
+		int count = 0;
+
+		try {
+			
+			count = ShowBook();
+			System.out.println("0. 뒤로가기");
+			System.out.print("수정할 교재 번호 입력:");
+			String seq = scan.nextLine();
+
+			if(seq == "0") {
+				System.out.println("이전 페이지로 돌아갑니다.");
+				System.out.println("계속 하시려면 엔터를 눌러주세요.");
+			} else if (Integer.parseInt(seq) > 0 && Integer.parseInt(seq) < count) {
+				
+				System.out.println();
+				System.out.println("===========================");
+				System.out.println("수정할 내용을 입력하세요.");
+				System.out.print("교재 이름: ");
+				String name = scan.nextLine();
+				
+				System.out.print("출판사 이름: ");
+				String publisher = scan.nextLine();			
+				
+				scan.close();
+				
+				String sql = "{ call proc_UpdateBook(?,?,?) }";
+				
+				conn = util.open();
+				stat = conn.prepareCall(sql);
+				
+				stat.setString(1, seq);
+				stat.setString(2, name);
+				stat.setString(3, publisher);
+				
+				stat.executeUpdate();
+				
+				System.out.println("Success: Update tbl_book ");
+				
+				stat.close();
+				conn.close();
+				
+			} else {
+				System.out.println("잘못된 번호를 입력하였습니다.");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Fail: Update tbl_book ");
+		}
+	}//UpdateBook
+
+	private static void UpdateClassroom() {
+		//강의실수정
+		Connection conn = null;
+		CallableStatement stat = null;
+		Scanner scan = new Scanner(System.in);
+		DBUtil util = new DBUtil();
+
+		int count = 0;
+		
+		try {
+			
+			count = ShowClassroom();
+			System.out.println("0. 뒤로가기");
+			System.out.print("수정할 강의실 번호 입력:");
+			String seq = scan.nextLine();
+			System.out.println();
+
+			if(seq == "0") {
+				System.out.println("이전 페이지로 돌아갑니다.");
+				System.out.println("계속 하시려면 엔터를 눌러주세요.");
+			} else if (Integer.parseInt(seq) > 0 && Integer.parseInt(seq) < count) {
+				
+				System.out.println("===========================");
+				System.out.println("수정할 내용을 입력하세요.");
+				System.out.print("강의실 수용 인원: ");
+				String maximum = scan.nextLine();
+				
+				scan.close();
+				
+				String sql = "{ call proc_UpdateClassroom(?,?) }";
+				
+				conn = util.open();
+				stat = conn.prepareCall(sql);
+				
+				stat.setString(1, maximum);
+				stat.setString(2, seq);
+				
+				stat.executeUpdate();
+				
+				System.out.println("Success: Update tbl_classroom ");
+				
+				stat.close();
+				conn.close();
+				
+			} else {
+				System.out.println("잘못된 번호를 입력하였습니다.");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Fail: Update tbl_classroom ");
+		}
+	}//UpdateClassroom
+
+	private static void UpdateSubject() {
+		//과목수정
+		Connection conn = null;
+		CallableStatement stat = null;
+		Scanner scan = new Scanner(System.in);
+		DBUtil util = new DBUtil();
+		
+		int count = 0;
+
+		try {
+			
+			count = ShowSubject();
+			System.out.println("0. 뒤로가기");
+			System.out.print("수정할 과목 번호 입력:");
+			String seq = scan.nextLine();
+			System.out.println();
+
+			if(seq == "0") {
+				System.out.println("이전 페이지로 돌아갑니다.");
+				System.out.println("계속 하시려면 엔터를 눌러주세요.");
+			} else if (Integer.parseInt(seq) > 0 && Integer.parseInt(seq) < count) {
+				
+				System.out.println("===========================");
+				System.out.println("수정할 내용을 입력하세요.");
+				System.out.print("과목 이름: ");
+				String name = scan.nextLine();
+				
+				System.out.print("과목 기간: ");
+				String period = scan.nextLine();
+				
+				scan.close();
+				
+				String sql = "{ call proc_UpdateSubject(?,?,?) }";
+				
+				conn = util.open();
+				stat = conn.prepareCall(sql);
+				
+				stat.setString(1, name);
+				stat.setString(2, period);
+				stat.setString(3, seq);
+				
+				stat.executeUpdate();
+				
+				System.out.println("Success: Update tbl_subject ");
+				
+				stat.close();
+				conn.close();
+				
+			} else {
+				System.out.println("잘못된 번호를 입력하였습니다.");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Fail: Update tbl_subject ");
+			
+		}
+	}//UpdateSubject
+
+	private static void UpdateCourse() {
+		//과정수정
+		Connection conn = null;
+		CallableStatement stat = null;
+		Scanner scan = new Scanner(System.in);
+		DBUtil util = new DBUtil();
+		
+		int count = 0;
+		
+		try {
+			
+			count = ShowCourse();
+			System.out.println("0. 뒤로가기");
+			System.out.print("수정할 과정 번호 입력:");
+			String seq = scan.nextLine();
+			System.out.println();
+			
+			if(seq == "0") {
+				System.out.println("이전 페이지로 돌아갑니다.");
+				System.out.println("계속 하시려면 엔터를 눌러주세요.");
+			} else if (Integer.parseInt(seq) > 0 && Integer.parseInt(seq) < count) {
+				
+				System.out.println("===========================");
+				System.out.println("수정할 내용을 입력하세요.");
+				System.out.print("과정 이름: ");
+				String name = scan.nextLine();
+				
+				System.out.print("과정 기간: ");
+				String period = scan.nextLine();
+				
+				scan.close();
+				
+				String sql = "{ call proc_updc(?,?,?) }";
+				
+				conn = util.open();
+				stat = conn.prepareCall(sql);
+				
+				stat.setString(1, name);
+				stat.setString(2, period);
+				stat.setString(3, seq);
+				
+				stat.executeUpdate();
+				
+				System.out.println("Success: Update tbl_Course ");
+				
+				stat.close();
+				conn.close();
+			} else {
+				System.out.println("잘못된 번호를 입력하였습니다.");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Fail: Update tbl_Course ");
+			
+		}
+	}//UpdateCourse
+
+	private static int ShowBook() {
+		//교재출력
+		Connection conn = null;
+		Statement stat = null;
+		ResultSet rs = null;
+		DBUtil util = new DBUtil();
+		
+		int count = 0;
+
+		try {
+
+			conn = util.open();
+			stat = conn.createStatement();
+
+			String sql = String.format("select b.seq seq, b.name bname, b.publisher publ, s.name sname from tbl_book b\r\n" + 
+					"    inner join tbl_subject s on b.subseq = s.seq \r\n" + 
+					"where b.delflag = 'Y' and s.delflag = 'Y' order by b.seq");
+			
+			rs = stat.executeQuery(sql);
+			
+			System.out.println("[No.]\t [과목명]\t\t [출판사]\t\t [교재명]");
+			
+			while(rs.next()) {
+				
+				String sname;
+				String publ;
+
+				if(rs.getString("sname").length() < 8) { 
+					sname = rs.getString("sname") + "\t\t";
+				} else if(rs.getString("sname").length() < 15) {
+					sname = rs.getString("sname") + "\t";
+				} else {
+					sname = rs.getString("sname");
+				}
+
+				if(rs.getString("publ").length() < 4) { 
+					publ = rs.getString("publ") + "\t\t";
+				} else if (rs.getString("publ").length() < 8) {
+					publ = rs.getString("publ") + "\t";
+				} else {
+					publ = rs.getString("publ");
+				}
+				
+				System.out.printf("%2s\t%s\t%-11s\t%s\r\n"
+						, rs.getString("seq")
+						, sname
+						, publ
+						, rs.getString("bname"));
+				count++;
+			}
+			
+			stat.close();
+			conn.close();
+			
+			System.out.println("Success: Select tbl_book inner join tbl_subject");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Fail: Select tbl_book inner join tbl_subject ");
+		}
+		return count;
+	}//ShowBook
+
+	private static int ShowClassroom() {
+		//강의실출력
+		Connection conn = null;
+		Statement stat = null;
+		ResultSet rs = null;
+		DBUtil util = new DBUtil();
+		
+		int count = 0;
+
+		try {
+
+			conn = util.open();
+			stat = conn.createStatement();
+
+			String sql = String.format("Select seq, maximum from tbl_Classroom where delflag = 'Y' order by seq");
+			
+			rs = stat.executeQuery(sql);
+			
+			System.out.println(" [강의실]  [인원수]");
+			
+			while(rs.next()) {
+				System.out.printf("%2s 강의실  %3s 명\r\n"
+						, rs.getString("seq")
+						, rs.getString("maximum"));
+				count++;
+			}
+			
+			stat.close();
+			conn.close();
+			
+			System.out.println("Success: Select tbl_Classroom ");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Fail: Select tbl_Classroom ");
+		}
+		return count;
+	}//ShowClassroom
+
+	private static int ShowSubject() {
+		//과목출력
+		Connection conn = null;
+		Statement stat = null;
+		ResultSet rs = null;
+		DBUtil util = new DBUtil();
+		
+		int count = 0;
+
+		try {
+
+			conn = util.open();
+			stat = conn.createStatement();
+
+			String sql = String.format("Select seq, name, period from tbl_subject where delflag = 'Y' order by seq");
+			
+			rs = stat.executeQuery(sql);
+			
+			System.out.println("[No.]\t [기간]\t [과목명]");
+			
+			while(rs.next()) {
+				System.out.printf("  %2s\t%3s주\t %s\r\n"
+						, rs.getString("seq")
+						, rs.getString("period")
+						, rs.getString("name"));
+				count++;
+			}
+			
+			stat.close();
+			conn.close();
+			
+			System.out.println("Success: Select tbl_subject ");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Fail: Select tbl_subject ");
+		}
+		return count;
+	}//ShowSubject
+
+	private static int ShowCourse() {
+		// 과정출력
+		Connection conn = null;
+		Statement stat = null;
+		ResultSet rs = null;
+		DBUtil util = new DBUtil();
+		
+		int count = 0;
+
+		try {
+
+			conn = util.open();
+			stat = conn.createStatement();
+
+			String sql = String.format("Select seq, name, period from tbl_course where delflag = 'Y' order by seq");
+			
+			rs = stat.executeQuery(sql);
+			
+			System.out.println("[No.]\t [기간]\t [과정명]");
+			
+			while(rs.next()) {
+				System.out.printf("  %2s\t%3s개월\t %s\r\n"
+						, rs.getString("seq")
+						, rs.getString("period")
+						, rs.getString("name"));
+				count++;
+			}
+			
+			stat.close();
+			conn.close();
+			
+			System.out.println("Success: Select tbl_course ");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Fail: Select tbl_course ");
+		}
+		return count;
+	}//ShowCourse
+
+	private static void AddBook() {
+		//교재추가
+		Connection conn = null;
+		Statement stat = null;
+		CallableStatement cstat = null;
+		ResultSet rs = null;
+		Scanner scan = new Scanner(System.in);
+		DBUtil util = new DBUtil();
+
+		try {
+
+			conn = util.open();
+			stat = conn.createStatement();
+			
+			String sql = "Select seq, name from tbl_subject where delflag = 'Y' order by seq";
+			
+			rs = stat.executeQuery(sql);
+			
+			System.out.println("[No.]\t[과목명]");
+			
+			while(rs.next()) {
+				System.out.printf(" %2s\t%s\r\n", rs.getString("seq"), rs.getString("name"));
+			}
+			
+			stat.close();
+			conn.close();
+			
+			System.out.print("과목 번호: ");
+			String subseq = scan.nextLine();
+			
+			System.out.println("새 교재 입력");
+			System.out.print("교재 이름: ");
+			String name = scan.nextLine();
+
+			System.out.print("교재 출판사: ");
+			String publisher = scan.nextLine();
+			
+			scan.close();
+			
+			sql = "{ call proc_AddBook(?,?,?) }";
+			
+			cstat = conn.prepareCall(sql);
+
+			cstat.setString(1, name);
+			cstat.setString(2, publisher);
+			cstat.setString(3, subseq);
+			
+			cstat.executeUpdate();
+			
+			System.out.println("Success: Insert tbl_book ");
+			
+			cstat.close();
+			conn.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Fail: Insert tbl_book ");
+		}
+		
+	}//AddBook
+
+	private static void AddClassroom() {
+		//강의실추가
+		Connection conn = null;
+		CallableStatement stat = null;
+		Scanner scan = new Scanner(System.in);
+		DBUtil util = new DBUtil();
+
+		try {
+
+			System.out.println("새 과정 입력");
+			System.out.print("최대 수용 인원: ");
+			String maximum = scan.nextLine();
+			
+			scan.close();
+			
+			String sql = "{ call proc_AddClassroom(?) }";
+			
+			conn = util.open();
+			stat = conn.prepareCall(sql);
+			
+			stat.setString(1, maximum);
+			
+			stat.executeUpdate();
+			
+			System.out.println("Success: Insert tbl_Classroom ");
+			
+			stat.close();
+			conn.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Fail: Insert tbl_Classroom ");
+		}
+	}//AddClassroom
+
+	private static void AddSubject() {
+		//과목추가
+		Connection conn = null;
+		CallableStatement stat = null;
+		Scanner scan = new Scanner(System.in);
+		DBUtil util = new DBUtil();
+
+		try {
+
+			System.out.println("새 과정 입력");
+			System.out.print("과목 이름: ");
+			String name = scan.nextLine();
+
+			System.out.print("과목 기간: ");
+			String period = scan.nextLine();
+			
+			scan.close();
+			
+			String sql = "{ call proc_AddSubject(?,?) }";
+			
+			conn = util.open();
+			stat = conn.prepareCall(sql);
+			
+			stat.setString(1, name);
+			stat.setString(2, period);
+			
+			stat.executeUpdate();
+			
+			System.out.println("Success: Insert tbl_Subject ");
+			
+			stat.close();
+			conn.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Fail: Insert tbl_Subject ");
+		}
+	}
+
+	private static void AddCourse() {
+		//과정추가
+		Connection conn = null;
+		CallableStatement stat = null;
+		Scanner scan = new Scanner(System.in);
+		DBUtil util = new DBUtil();
+
+		try {
+
+			System.out.println("새 과정 입력");
+			System.out.print("과정 이름: ");
+			String name = scan.nextLine();
+
+			System.out.print("과정 기간: ");
+			String period = scan.nextLine();
+			
+			scan.close();
+			
+			String sql = "{ call proc_AddC(?,?) }";
+			
+			conn = util.open();
+			stat = conn.prepareCall(sql);
+			
+			stat.setString(1, name);
+			stat.setString(2, period);
+			
+			stat.executeUpdate();
+			
+			System.out.println("Success: Insert tbl_Course ");
+			
+			stat.close();
+			conn.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Fail: Insert tbl_Course ");
+			
+		}
+	}//AddCourse
+
+	private static void AddAdmin() {
+		//관리자추가
+		Connection conn = null;
+		CallableStatement stat = null;
+		Scanner scan = new Scanner(System.in);
+		DBUtil util = new DBUtil();
+
+		try {
+
+			System.out.println("새 관리자 입력");
+			System.out.print("관리자 ID: ");
+			String id = scan.nextLine();
+
+			System.out.print("관리자 PW: ");
+			String pw = scan.nextLine();
+			
+			scan.close();
+			
+			String sql = "{ call proc_AddAdmin(?,?) }";
+			
+			conn = util.open();
+			stat = conn.prepareCall(sql);
+			
+			stat.setString(1, id);
+			stat.setString(2, pw);
+			
+			stat.executeUpdate();
+			
+			System.out.println("Success: Insert tbl_Admin");
+			
+			stat.close();
+			conn.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Fail: Insert tbl_Admin");
+			
+		}
+	}//AddAdmin
+
+	private static void loginAdmin() {
+		// 관리자로그인
+		Connection conn = null;
+		CallableStatement stat = null;
+		Scanner scan = new Scanner(System.in);
+		DBUtil util = new DBUtil();
+
+		try {
+			
+			System.out.println("관리자 로그인");
+			System.out.print("관리자 ID: ");
+			String id = scan.nextLine();
+
+			System.out.print("관리자 PW: ");
+			String pw = scan.nextLine();
+			
+			scan.close();
+			
+			String sql = "{ call proc_loginadmin(?,?,?) }";
+			
+			conn = util.open();
+			stat = conn.prepareCall(sql);
+			
+			stat.setString(1, id);
+			stat.setString(2, pw);
+			stat.registerOutParameter(3, OracleTypes.NUMBER);
+			
+			stat.executeUpdate();
+			
+			//1이면 로그인성공, 0이면 로그인실패
+			int num = stat.getInt(3);
+			
+			if(num == 1) {
+				System.out.println("로그인 성공");
+				// 로그인 성공
+			} else {
+				System.out.println("로그인 실패");
+				// 로그인 실패
+			}
+			
+			stat.close();
+			conn.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}//loginAdmin
+	
+}

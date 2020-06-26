@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        /* float: 기존 출력정책을 벗어나, 기존의 위치에 속한 라인의 가장 좌측(우측)으로 이동한다. (남은 여백에 데이터가 채워지는 것은 부가적인 속성이다. 이것 때문에 요즘 표를 쓰지 않는다.)*/
+
+        #pic {
+            float: left;
+        }
+
+        #notice {
+            border-bottom: 1px dashed gray;
+        }
+
+        #notice small {
+            float: right;
+            margin-top: 6px;
+        }
+
+        .box {
+            border: 1px solid black;
+            width: 150px;
+            height: 150px;
+            float: left;
+        }
+
+        #box1 {background-color: red;}
+        #box2 {background-color: orange;}
+        #box3 {background-color: yellow;}
+        #box4 {background-color: green;}
+        #box5 {background-color: blue;}
+
+    </style>
+</head>
+<body>
+    <!-- ex22_float.html -->
+    <h1>대표 인사</h1>
+
+    <p><img src="../images/man_02.png" alt="" id="pic"> 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다.ㅋ 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요.<b style="float: left; color: red;">아무개</b> 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다.</p>
+
+    <hr>
+
+    <h2 id="notice">공지 사항 <small>한독빌딩 임직원</small></h2>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus amet facere omnis, quia aut, eius pariatur repellendus sint numquam quasi porro itaque doloremque odio, atque distinctio corporis veniam unde necessitatibus eligendi vel! Quae facilis recusandae sint debitis nesciunt atque sed impedit, a iure repudiandae sunt harum at ad officiis aspernatur? Laborum perferendis temporibus quia, ab possimus cum aspernatur illo necessitatibus reprehenderit, totam eveniet vero esse, quae minus? Adipisci beatae hic ea similique consequatur officia, ad qui dolorum nobis a ex vel facilis eaque quo iste quas perferendis! Officia nostrum ullam esse animi sapiente, veniam fugiat eaque, reprehenderit sit dolore distinctio?</p>
+
+    <hr>
+
+    <div id="box1" class="box">상자1</div>
+    <div id="box2" class="box">상자2</div>
+    <div id="box3" class="box">상자3</div>
+    <div id="box4" class="box">상자4</div>
+    <div id="box5" class="box">상자5</div>
+
+
+    <div style="clear: both;">추가 내용입니다.</div>
+    나머지...
+    
+</body>
+</html>

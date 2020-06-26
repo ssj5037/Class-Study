@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 
+		ex09.html 
+
+		CSS 선택자 + 툴 기능
+
+		Emmet(= Zen Coding)
+		- 편집기 확장 기능
+		- CSS 선택자를 사용해서 HTML 코드 작업을 쉽게 도와주는 기능
+		- http://emmet.io
+		
+	-->
+
+	<h1>태그 선택자</h1>
+	<!-- div { color: blue; } -->
+	<div></div>
+
+	div
+	<div></div>
+
+	p
+	<p></p>
+
+	a
+	<a href="url">content</a>
+
+	img
+	<img src="url" alt="설명">
+
+	input
+	<input type="text">
+
+
+
+	<h1>id 선택자</h1>
+	<!-- div#box1 {} -->
+
+	div#box1
+	<div id="box1">상자</div>
+
+	h1#title1
+	<h1 id="title1">제목</h1>
+
+	nav#mainmenu
+	<nav id="mainmenu">메인 메뉴</nav>
+
+	#box
+	<div id="div"></div>
+
+	<h1>class 선택자</h1>
+	<!-- div.item {} -->
+
+	div.item
+	<div class="item"></div>
+
+	p.description
+	<p class="description"></p>
+
+	img.pic
+	<img src="URL" alt="설명" class="pic">
+
+	div.type1.type2.type3
+	<div class="type1 type2 type3"></div>
+
+	<!-- 항상 커서는 맨 끝에서. -->
+
+	<div id="box1" class="box red big"></div>
+
+
+	<h1>속성 선택자</h1>
+	<!-- div[title] {} : [] 안에 들어간 속성을 찾으시오.-->
+	<div title=""></div>
+
+	div[title]
+	<div title=""></div>
+
+	img[title]
+	<img src="" alt="" title="">
+
+	img[title]#pic1.pics
+	<img src="" alt="" title="" id="pic1" class="pics">
+
+	div[title=상자]
+	<div title="상자"></div>
+	<!-- 값도 미리 세팅을 할 수 있다. -->
+
+	img[width height]
+	<img src="" alt="" width="" height="">
+	<!-- 속성 두개를 동시에 추가 -->
+
+	img[title width=100 height=200]#pic1.pics
+	<img src="" alt="" title="" width="100" height="200" id="pic1" class="pics">
+
+
+
+	<h1>PCDATA</h1>
+
+	<div>상자</div>
+
+	<!-- PCDATA는 {} 안에다가 넣음 -->
+	div{상자}
+	<div>상자</div>
+
+	a[href=http://naver.com]{네이버로 이동합니다.}
+	<a href="http://naver.com">네이버로 이동합니다.</a>
+
+	div[title=상자]#box1.item{상자}
+	<div title="상자" id="box1" class="item">상자</div>
+	div#box1[title=상자].item{상자}
+	<div id="box1" title="상자" class="item">상자</div>
+
+
+	-------------------------------------------------------------- 기본 요소
+
+
+	<h1>기본 요소 조합 X 생산성 증가 -> 반복</h1>
+
+	div*5
+	<div>aaa</div>
+	<div>aaa</div>
+	<div>aaa</div>
+	<div>aaaaaa</div>
+	<div>aaaaaa</div>
+
+	div.item*5
+	<div class="item"></div>
+	<div class="item"></div>
+	<div class="item"></div>
+	<div class="item"></div>
+	<div class="item"></div>
+
+	div.item[title]{아이템}*5
+	<div class="item" title="">아이템</div>
+	<div class="item" title="">아이템</div>
+	<div class="item" title="">아이템</div>
+	<div class="item" title="">아이템</div>
+	<div class="item" title="">아이템</div>
+
+	div#item1*5
+	div#item$*5
+	<div id="item1"></div>
+	<div id="item2"></div>
+	<div id="item3"></div>
+	<div id="item4"></div>
+	<div id="item5"></div>
+	
+	div{상자$}*5
+	<div>상자1</div>
+	<div>상자2</div>
+	<div>상자3</div>
+	<div>상자4</div>
+	<div>상자5</div>
+	<!-- 증가하는 넘버링은 $로 표시 -->
+
+	div[title=상자$]*5
+	<div title="상자1"></div>
+	<div title="상자2"></div>
+	<div title="상자3"></div>
+	<div title="상자4"></div>
+	<div title="상자5"></div>
+
+	h$*6
+	<h1></h1>
+	<h2></h2>
+	<h3></h3>
+	<h4></h4>
+	<h5></h5>
+	<h6></h6>
+
+	div#item$$*5
+	<div id="item01"></div>
+	<div id="item02"></div>
+	<div id="item03"></div>
+	<div id="item04"></div>
+	<div id="item05"></div>
+	<!-- $를 적는 만큼의 자리수를 확보한다. -->
+
+	a[href='view.jsp?seq=$']{글보기}*5
+	<a href="view.jsp?seq=1">글보기</a>
+	<a href="view.jsp?seq=2">글보기</a>
+	<a href="view.jsp?seq=3">글보기</a>
+	<a href="view.jsp?seq=4">글보기</a>
+	<a href="view.jsp?seq=5">글보기</a>
+
+
+
+	<h1>형제 선택자</h1>
+	<!-- a와 b 사이에 무슨 값이 있을 지 모르기 때문에 이건 에밋에서 지원하지 않음 -->
+	a ~ b : 형(위) 
+	<!-- b바로 위에 a가 오기 떄문에 확실한 값이므로 에밋에서 지원한다. -->
+	a + b : 형(바로 위)
+
+	div+p
+	<div></div>
+	<p></p>
+
+	h1+p
+	<h1></h1>
+	<p></p>
+
+	h1#title{제목입니다.}+p.description{문단입니다.}
+	<h1 id="title">제목입니다.</h1>
+	<p class="description">문단입니다.</p>
+	
+	h1#title{제목입니다.}+p.description{문단입니다.}*3
+	<h1 id="title">제목입니다.</h1>
+	<p class="description">문단입니다.</p>
+	<p class="description">문단입니다.</p>
+	<p class="description">문단입니다.</p>
+	
+	(h1#title{제목입니다.}*3+p.description{문단입니다.})*3
+	<h1 id="title">제목입니다.</h1>
+	<p class="description">문단입니다.</p>
+	<h1 id="title">제목입니다.</h1>
+	<p class="description">문단입니다.</p>
+	<h1 id="title">제목입니다.</h1>
+	<p class="description">문단입니다.</p>
+
+	<h1>자식 선택자</h1>
+	a b : 자손 <!-- 불가능 -->
+	a > b : 자식 <!-- 가능 -->
+
+	div>span
+	<div><span></span></div>
+
+	ul>li
+	<ul>
+		<li></li>
+	</ul>
+
+	ul>li*5
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+
+	ul#list1>li.item{항목$}*5
+	<ul id="list1">
+		<li class="item">항목1</li>
+		<li class="item">항목2</li>
+		<li class="item">항목3</li>
+		<li class="item">항목4</li>
+		<li class="item">항목5</li>
+	</ul>
+
+	h1#title{오늘의 할일}+ul#list>li.item{할일$}*5+div{할일을 미루지 말자!!!}
+	<h1 id="title">오늘의 할일</h1>
+	<ul id="list">
+		<li class="item">할일1</li>
+		<li class="item">할일2</li>
+		<li class="item">할일3</li>
+		<li class="item">할일4</li>
+		<li class="item">할일5</li>
+		<div>할일을 미루지 말자!!!</div>
+	</ul>
+
+	<!-- 소괄호!! -->
+	h1#title{오늘의 할일}+(ul#list>li.item{할일$}*5)+div{할일을 미루지 말자!!!}
+	<h1 id="title">오늘의 할일</h1>
+	<ul id="list">
+		<li class="item">할일1</li>
+		<li class="item">할일2</li>
+		<li class="item">할일3</li>
+		<li class="item">할일4</li>
+		<li class="item">할일5</li>
+	</ul>
+	<div>할일을 미루지 말자!!!</div>
+
+
+	<h1>10행 5열 테이블</h1>
+
+	table>tr>td
+	table>tr*10>td*5
+
+	table#tbl1>tr>th*5
+	table#tbl1>tr>th*5+tr>td*5 <!-- 이 경우엔 th에다가 td가 붙어버림.. 이렇게 하면 XX-->
+	table#tbl1>(tr>th*5)+(tr>td*5)*9
+	table#tbl1>(tr>th#col$*5)+(tr>td.cell$*5)*9
+	<table id="tbl1">
+		<tr>
+			<th id="col1"></th>
+			<th id="col2"></th>
+			<th id="col3"></th>
+			<th id="col4"></th>
+			<th id="col5"></th>
+		</tr>
+		<tr>
+			<td class="cell1"></td>
+			<td class="cell2"></td>
+			<td class="cell3"></td>
+			<td class="cell4"></td>
+			<td class="cell5"></td>
+		</tr>
+		<tr>
+			<td class="cell1"></td>
+			<td class="cell2"></td>
+			<td class="cell3"></td>
+			<td class="cell4"></td>
+			<td class="cell5"></td>
+		</tr>
+		<tr>
+			<td class="cell1"></td>
+			<td class="cell2"></td>
+			<td class="cell3"></td>
+			<td class="cell4"></td>
+			<td class="cell5"></td>
+		</tr>
+		<tr>
+			<td class="cell1"></td>
+			<td class="cell2"></td>
+			<td class="cell3"></td>
+			<td class="cell4"></td>
+			<td class="cell5"></td>
+		</tr>
+		<tr>
+			<td class="cell1"></td>
+			<td class="cell2"></td>
+			<td class="cell3"></td>
+			<td class="cell4"></td>
+			<td class="cell5"></td>
+		</tr>
+		<tr>
+			<td class="cell1"></td>
+			<td class="cell2"></td>
+			<td class="cell3"></td>
+			<td class="cell4"></td>
+			<td class="cell5"></td>
+		</tr>
+		<tr>
+			<td class="cell1"></td>
+			<td class="cell2"></td>
+			<td class="cell3"></td>
+			<td class="cell4"></td>
+			<td class="cell5"></td>
+		</tr>
+		<tr>
+			<td class="cell1"></td>
+			<td class="cell2"></td>
+			<td class="cell3"></td>
+			<td class="cell4"></td>
+			<td class="cell5"></td>
+		</tr>
+		<tr>
+			<td class="cell1"></td>
+			<td class="cell2"></td>
+			<td class="cell3"></td>
+			<td class="cell4"></td>
+			<td class="cell5"></td>
+		</tr>
+	</table>
+	
+
+	lorem ipsum
+	로렘 입숨은 출판이나 그래픽 디자인 분야에서 폰트, 타이포그래피, 레이아웃 같은 그래픽 요소나 시각적 연출을 보여줄 때 사용하는 표준 채우기 텍스트로, 최종 결과물에 들어가는 실제적인 문장 내용이 채워지기 전에 시각 디자인 프로젝트 모형의 채움 글로도 이용된다. 
+
+
+	lorem
+	Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem sed maxime praesentium officia? Beatae deserunt exercitationem, ut, repudiandae quod doloremque fugit quasi ipsum, consequatur in earum corrupti sed illo repellendus.
+
+	h1{lorem}
+	h1>lorem
+	h1>lorem5
+	<h1>Lorem ipsum dolor sit amet.</h1>
+	
+	h1>lorem1
+	<h1>Lorem.</h1>
+
+	((h1>lorem5)+(p>lorem50)*3)*5
+
+	<h1>Lorem ipsum dolor sit amet.</h1>
+	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo iure, harum explicabo laborum consequatur neque dicta a consectetur quaerat illum distinctio odit saepe exercitationem voluptate sequi, maxime non in pariatur perferendis esse laudantium quam sed. Nisi necessitatibus ullam enim facilis deserunt. Fugiat quas voluptatibus nostrum ea similique, totam eos dignissimos!</p>
+	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit illum maxime rerum quas? Illum dolores possimus eaque dolore nemo unde est soluta porro, quia ducimus voluptatem, reiciendis veniam recusandae autem molestiae ut adipisci optio dignissimos itaque, aperiam perferendis doloribus non. Voluptates veritatis labore optio ab dolor quos molestiae omnis ea.</p>
+	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti laborum tenetur consequatur. Officia provident aperiam adipisci quisquam laboriosam quia sit laborum delectus, odio eveniet fugit! Ab, quo sint molestias sequi itaque at eos quisquam maiores possimus quidem blanditiis tempora eum dolorum dignissimos qui error cum fugiat, mollitia vel iusto ipsa!</p>
+	<h1>Cupiditate sunt veniam voluptates beatae.</h1>
+	<p>Pariatur sequi consectetur neque nostrum nemo facilis id, incidunt illum explicabo aliquam velit voluptatum eius! Quis dolor eveniet aliquam obcaecati assumenda ipsam nobis totam! Earum dignissimos qui esse accusamus, reiciendis error, iste sapiente quas libero molestiae praesentium laudantium consectetur maiores exercitationem inventore. Quae necessitatibus saepe possimus, delectus voluptate animi exercitationem.</p>
+	<p>Porro perspiciatis molestiae ducimus dolorum laudantium cumque quasi, doloremque magni harum sit quis, alias nulla officiis quidem similique! Nesciunt temporibus atque vel tempore, suscipit, veniam dolore doloremque laboriosam dolores quasi, molestias saepe. Mollitia quidem voluptatem aliquid voluptates, nam magnam. Illum id eaque nobis odit autem veritatis, dignissimos hic tempore aliquid!</p>
+	<p>Eaque, officiis nesciunt, quod quibusdam, dignissimos optio excepturi voluptate nulla amet in quos. Tempora, vero quis! Error optio magni ad facilis quasi vero, provident sequi, temporibus officia aliquid repellendus veniam alias eligendi consectetur magnam, laboriosam odio! Impedit eius voluptas totam commodi, hic saepe molestias vel voluptatum perspiciatis debitis, quis architecto?</p>
+	<h1>Numquam repudiandae perferendis ipsa obcaecati?</h1>
+	<p>Saepe, necessitatibus exercitationem eaque excepturi quas laboriosam sint delectus eius dolores quam doloremque quo adipisci sunt quibusdam nulla explicabo qui quod officia consequatur? Pariatur dicta totam corrupti. Perferendis tempora ullam ad enim perspiciatis architecto nihil est accusamus eius cum placeat quam eveniet praesentium obcaecati cupiditate harum nulla officiis, ducimus distinctio.</p>
+	<p>Minus aliquid, libero nulla sequi repellendus voluptatum. In dolorem perspiciatis, suscipit quae id soluta, deserunt porro quis esse, tempore accusantium. Recusandae voluptas tenetur neque omnis necessitatibus reprehenderit suscipit alias! Possimus, architecto iste ab tenetur voluptatem eaque odio assumenda cupiditate facere facilis culpa dignissimos asperiores quae magnam minus alias delectus repellendus.</p>
+	<p>Cum ratione repellendus non adipisci id, ducimus, consequatur eum assumenda ipsum totam voluptatibus. Culpa officia perferendis magnam quas dolor doloremque enim sapiente soluta fugiat sint, fugit dolorem molestias beatae placeat suscipit aperiam aut provident id quidem corporis. Harum quod quos illum, non recusandae culpa, dolorum ipsum cumque et laudantium assumenda?</p>
+	<h1>Praesentium pariatur quos itaque consectetur?</h1>
+	<p>Unde, harum sed? Suscipit in labore officia! Iusto praesentium quos saepe repellat quisquam! Necessitatibus totam ipsum, excepturi nulla neque soluta assumenda voluptatum atque accusantium, sapiente omnis maiores dolore dignissimos provident pariatur aliquid quasi ea nisi? Nemo doloribus animi enim nobis excepturi numquam exercitationem, nulla magni ullam in incidunt ex provident.</p>
+	<p>Blanditiis animi iure eveniet harum temporibus et mollitia modi corporis alias ipsa, veritatis eaque soluta debitis. Molestias aliquam aliquid deleniti reprehenderit ipsam consequuntur dolore sapiente, at dolores maxime cumque hic iusto sint distinctio voluptates consectetur doloribus debitis recusandae eos fuga non consequatur nostrum minima temporibus! Unde a id et magnam?</p>
+	<p>At est, molestias perspiciatis sunt inventore similique aliquid iure. Doloremque corrupti numquam tempora, est rem nulla vitae voluptatem, alias fugiat laboriosam asperiores eveniet labore eaque hic quae! Neque nostrum consequuntur rerum ad odio dolores dignissimos, fugit atque accusantium veritatis eum ullam unde dolore provident suscipit, ducimus magni quas deserunt minus.</p>
+	<h1>Natus voluptates quam reiciendis. Quam.</h1>
+	<p>Ad, ullam pariatur, libero placeat est, earum alias vel nam modi totam aut blanditiis natus voluptatibus dolorum? Incidunt recusandae illo ratione dolorem excepturi, ut atque doloremque rerum repellendus fuga, aliquam quia unde est ipsum sit magnam doloribus. Illum earum nisi at ratione saepe soluta corporis veritatis hic. Quisquam, fuga libero?</p>
+	<p>Aliquam voluptates provident, eveniet atque vitae modi in laboriosam, ducimus, nostrum quisquam cumque? Officiis nam expedita iste, eveniet temporibus ipsum possimus atque maiores reiciendis eum eaque dolore deserunt laudantium officia omnis quam laborum? Inventore quisquam adipisci, magnam voluptatum facilis accusamus porro, excepturi iure ut soluta veniam modi, praesentium maiores nesciunt.</p>
+	<p>Praesentium fuga fugit, unde corporis inventore provident, ratione nam adipisci, perferendis aliquam dolores! Quidem ad quaerat aperiam repudiandae saepe exercitationem maiores ratione iure veritatis perspiciatis commodi totam fugit iste, quam nobis a nemo. Officiis corrupti inventore officia, nostrum dicta fuga earum quam! Quam itaque numquam delectus eaque alias consequuntur optio.</p>
+
+
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #weather .arrow {
+            clear: both;
+            /* border: 1px solid black; */
+            width: 15px;
+            height: 15px;
+            background-image: url(../images/ui-icons_3d3d3d_256x240.png);
+            background-position: -33px -18px;
+            float: left;
+        }
+
+        #weather .title {
+            float: left;
+            font-family: '돋움';
+            font-size: 12px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        #weather .content {
+            clear: both;
+            border: 1px solid gray;
+            width: 590px;
+            height: 140px;
+            font-size: 14px;
+            padding-top: 10px;
+        }
+
+        #weather .content .item {
+            /* border: 1px solid black; */
+            float: left;
+            width: 170px;
+            padding: 7px 10px;
+            /* margin: x auto;             */
+        }
+        
+        #weather .content .icon {
+            /* border: 1px solid black; */
+            width: 40px;
+            height: 40px;
+            float: left;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        #weather #wash {background-image: url(../images/ico_index0.gif);}
+        #weather #fitness {background-image: url(../images/ico_index2.gif);}
+        #weather #washcar {background-image: url(../images/ico_index3.gif);}
+        #weather #umbrella {background-image: url(../images/ico_index9.gif);}
+        #weather #sleep {background-image: url(../images/ico_index15.gif);}
+
+        #weather .content span {
+            font-family: '돋움';
+            font-size: 12px;
+            font-weight: bold;
+            color: #666;
+        }
+
+        #weather .content .score {
+            color: #FF6600;
+        }
+
+        #weather .content .exp {
+            font-size: 11px;
+        }
+    </style>
+</head>
+<body>
+    <div id="weather">
+        <div class="header">
+            <div class="arrow"></div>
+            <div class="title">서울/경기지역</div>
+        </div>
+
+        <div class="content">
+            <div class="item">
+                <div id="wash" class="icon"></div>
+                <div class="status">
+                    <div>
+                        <span>빨래지수</span>
+                        <span class="score">90</span>
+                    </div>
+                    <div class="exp">밀린 빨래하세요</div>
+                </div>
+            </div>
+            <div class="item">
+                <div id="fitness" class="icon"></div>
+                <div class="status">
+                    <div>
+                        <span>운동지수</span>
+                        <span class="score">80</span>
+                    </div>
+                    <div class="exp">야외 경기를 즐겨요</div>
+                </div>
+            </div>
+            <div class="item">
+                <div id="washcar" class="icon"></div>
+                <div class="status">
+                    <div>
+                        <span>세차지수</span>
+                        <span class="score">90</span>
+                    </div>
+                    <div class="exp">세차 후의 상쾌함을 느껴보세요</div>
+                </div>
+            </div>
+            <div class="item">
+                <div id="umbrella" class="icon"></div>
+                <div class="status">
+                    <div>
+                        <span>우산지수</span>
+                        <span class="score">10</span>
+                    </div>
+                    <div class="exp">필요 없을 듯 합니다</div>
+                </div>
+            </div>
+            <div class="item">
+                <div id="sleep" class="icon"></div>
+                <div class="status">
+                    <div>
+                        <span>수면지수</span>
+                        <span class="score">80</span>
+                    </div>
+                    <div class="exp">쾌적한 편입니다</div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div>
+            <div class="arrow"></div>
+            <div class="title">계절별 생활지수</div>
+        </div>
+
+        <div class="content">
+            <div class="item">
+                <div id="wash" class="icon"></div>
+                <div class="status">
+                    <div>
+                        <span>자외선지수</span>
+                        <span class="score">70</span>
+                    </div>
+                    <div class="exp">자외선 노출 대비 하세요</div>
+                </div>
+            </div>
+            <div class="item">
+                <div id="wash" class="icon"></div>
+                <div class="status">
+                    <div>
+                        <span>불쾌지수</span>
+                        <span class="score">40</span>
+                    </div>
+                    <div class="exp">불쾌함을 느끼기 힘듭니다</div>
+                </div>
+            </div>
+            <div class="item">
+                <div id="wash" class="icon"></div>
+                <div class="status">
+                    <div>
+                        <span>냉방지수</span>
+                        <span class="score">20</span>
+                    </div>
+                    <div class="exp">냉방 없이 지낼 만 합니다</div>
+                </div>
+            </div>
+            <div class="item">
+                <div id="wash" class="icon"></div>
+                <div class="status">
+                    <div>
+                        <span>식중독지수</span>
+                        <span class="score">0</span>
+                    </div>
+                    <div class="exp">걱정 없어요</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
