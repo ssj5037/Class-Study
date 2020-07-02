@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        #content {
+            width: 400px;
+            margin: 10px auto;
+            /* 너비가 없으면 마진이 적용되지 않음. 애초에 꽉 찬 상태이기 때문에. */
+        }
+        
+        h1 {font-variant: small-caps;}
+
+        #content .item{
+            border: 1px solid #999;
+            width: 350px;
+            height: 150px;
+            border-radius: 5px;
+            margin: 5px;
+            overflow: hidden;
+        }
+        
+        #content .item label {
+            font-size: 3em;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            font-variant: small-caps;
+            font-weight: bold;
+            display: block;
+            float: left;
+            cursor: pointer;
+            padding-top: 20px;
+            width: 150px;
+            height: 150px;
+            background-color: #eee;
+            text-align: center;
+            position: relative;
+            left: 0;
+            top: 0;
+            z-index: 1; 
+            /* z-index에 1을 주면 다른 애들보다 위에 위치하게 되서 부모가 아니어도 오버플로우된 값을 숨긴 것 처럼 할 수 있다. */
+        }
+
+        #content input[type="radio"]{
+            border: 1px solid black;
+            display: none;
+        }
+
+        #content .disc {
+            /* border: 1px solid black; */
+            width: 200px;
+            height: 150px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            /* background-color: white; */
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            float: left;
+        }
+
+        #disc1 {background-image: url(../images/lp01.png);}
+        #disc2 {background-image: url(../images/lp02.png);}
+        #disc3 {background-image: url(../images/lp03.png);}
+        #disc4 {background-image: url(../images/lp04.png);}
+
+        #content input[type="radio"]:checked ~ #disc1,
+        #content input[type="radio"]:checked ~ #disc2,
+        #content input[type="radio"]:checked ~ #disc3,
+        #content input[type="radio"]:checked ~ #disc4 {
+            animation-name: discRotate;
+            animation-duration: 1s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        #content input[type="radio"]:checked + label {
+            background-color: tomato;
+            color: white
+        }
+
+        @keyframes discRotate {
+            from {transform: rotate(0deg);}
+            to {transform: rotate(360deg);}
+        }
+
+    </style>
+</head>
+<body>
+    <div id="content">
+        <h1>Music</h1>
+        <div class="item">
+            <input type="radio" name="rb" id="rb1">
+            <label for="rb1">Play</label>
+            <div class="disc" id="disc1"></div>
+        </div>
+        <div class="item">
+            <input type="radio" name="rb" id="rb2">
+            <label for="rb2">Play</label>
+            <div class="disc" id="disc2"></div>
+        </div>
+        <div class="item">
+            <input type="radio" name="rb" id="rb3">
+            <label for="rb3">Play</label>
+            <div class="disc" id="disc3"></div>
+        </div>
+        <div class="item">
+            <input type="radio" name="rb" id="rb4">
+            <label for="rb4">Play</label>
+            <div class="disc" id="disc4"></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        #menu {
+            /* border: 1px solid black; */
+            width: 630px;
+            margin: 0px auto;
+            transform: translate(0px, -105px);
+            cursor: pointer;
+        }
+
+        #menu::after {
+            content: ' ';
+            display: block;
+            clear: both;
+        }
+
+        #menu img {
+            /* 코드의 깔끔함을 위해 엔터를 친 것이 공백으로 들어간다.
+            float:left;를 이용하여 공백 제거를 한다. */
+            float: left;
+            transition: transform .5s;
+        }
+
+        #menu img:hover {
+            transform: translate(0px, 90px);
+        }
+
+        #submenu {
+            /* border: 1px solid black; */
+            width: 126px;
+            transform: translate(-105px, 0px);
+            cursor: pointer;
+        }
+
+        #submenu {
+            content: ' ';
+            display: block;
+            clear: both;
+        }
+
+        #submenu img:hover {
+            transform: translate(90px, 0px);
+        }
+
+        #submenu img {
+            float: left;
+            transition: transform .5s;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- ex42_transform.html -->
+
+    <nav id="menu">
+        <img src="../images/rect_icon01.png" alt="">
+        <img src="../images/rect_icon02.png" alt="">
+        <img src="../images/rect_icon03.png" alt="">
+        <img src="../images/rect_icon04.png" alt="">
+        <img src="../images/rect_icon05.png" alt="">
+    </nav>
+
+    <nav id="submenu">
+        <img src="../images/rect_icon01.png" alt="">
+        <img src="../images/rect_icon02.png" alt="">
+        <img src="../images/rect_icon03.png" alt="">
+        <img src="../images/rect_icon04.png" alt="">
+        <img src="../images/rect_icon05.png" alt="">
+    </nav>
+</body>
+</html>

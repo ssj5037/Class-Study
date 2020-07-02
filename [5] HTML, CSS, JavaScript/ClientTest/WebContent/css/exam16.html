@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main {
+            width: 700px;
+            height: 700px;
+            border: 30px dashed #aaa;
+            margin: 200px auto;
+            font-weight: bold;
+            font-variant: small-caps;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        #main div {
+            position: absolute;
+            left: 300px;
+            border-radius: 50px;
+            border: 15px solid #666;
+            
+        }
+        
+        #main #sec {
+            top: 30px;
+            width: 50px;
+            height: 300px;
+            background-color: gold;
+            transform-origin: bottom;
+            animation-duration: 1s;
+        }
+        
+        #main #min {
+            top: 100px;
+            width: 50px;
+            height: 230px;
+            background-color: cornflowerblue;
+            transform-origin: bottom;
+            animation-duration: 10s;
+        }
+        
+        #main #hour {
+            top: 170px;
+            width: 50px;
+            height: 160px;
+            background-color: tomato;
+            animation-duration: 100s;
+            transform-origin: bottom;
+        }
+        
+        #main:hover #sec, #main:hover #min, #main:hover #hour {
+            animation-name: rot;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+        
+        @keyframes rot {
+            form {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="hour">Hour</div>
+        <div id="min">Min</div>
+        <div id="sec">Sec</div>
+    </div>
+</body>
+</html>

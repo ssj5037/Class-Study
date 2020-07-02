@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- ex21_three.html : 결과 통보 페이지(성공, 실패) -->
+
+    <script>
+
+        // 가입 O
+        // alert("회원가입 성공!!!");
+        
+        // 가입 X
+        alert("회원가입 실패!!!");
+
+        // 다시 입력을 위해서 첫번째 페이지로 이동
+        // location.href = "ex21_one.html";
+        // history.go(-2); >> 마지막 상태를 복구하라는 의미이다.
+        history.back();
+        // history.go(-2);
+    </script>
+</body>
+</html>

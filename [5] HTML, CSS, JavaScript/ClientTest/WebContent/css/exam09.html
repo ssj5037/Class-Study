@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            margin: 100px auto;
+            position: relative;
+            top: 25px;
+            transition: all 1s
+        }
+
+        #box1 {
+            width: 550px;
+            height: 550px;
+            background-color: red;
+        }
+
+        #box2 {
+            width: 500px;
+            height: 500px;
+            background-color: orange;
+        }
+        #box3 {
+            width: 450px;
+            height: 450px;
+            background-color: yellow;
+        }
+        #box4 {
+            width: 400px;
+            height: 400px;
+            background-color: green;
+        }
+        #box5 {
+            width: 350px;
+            height: 350px;
+            background-color: blue;
+        }
+        #box6 {
+            width: 300px;
+            height: 300px;
+            background-color: purple;
+        }
+        #box7 {
+            width: 250px;
+            height: 250px;
+            background-color: plum;
+        }
+
+        #box1:hover #box2
+        , #box1:hover #box3
+        , #box1:hover #box4
+        , #box1:hover #box5
+        , #box1:hover #box6
+        , #box1:hover #box7 {
+            border-radius: 10%;
+        }
+
+        #box2:hover #box2 {border-radius: 10%;}
+        #box2:hover #box3
+        , #box2:hover #box4
+        , #box2:hover #box5
+        , #box2:hover #box6
+        , #box2:hover #box7 {
+            border-radius: 20%;
+        }
+
+        #box3:hover #box2 {border-radius: 10%;}
+        #box3:hover #box3 {border-radius: 20%;}
+        #box3:hover #box4
+        , #box3:hover #box5
+        , #box3:hover #box6
+        , #box3:hover #box7 {
+            border-radius: 30%;
+        }
+
+        #box4:hover #box2 {border-radius: 10%;}
+        #box4:hover #box3 {border-radius: 20%;}
+        #box4:hover #box4 {border-radius: 30%;}
+        #box4:hover #box5
+        , #box4:hover #box6
+        , #box4:hover #box7 {
+            border-radius: 40%;
+        }
+
+        #box5:hover #box2 {border-radius: 10%;}
+        #box5:hover #box3 {border-radius: 20%;}
+        #box5:hover #box4 {border-radius: 30%;}
+        #box5:hover #box5 {border-radius: 40%;}
+        #box5:hover #box6
+        , #box5:hover #box7 {
+            border-radius: 50%;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div id="box1" class="box">
+        <div id="box2" class="box">
+            <div id="box3" class="box">
+                <div id="box4" class="box">
+                    <div id="box5" class="box">
+                        <div id="box6" class="box">
+                            <div id="box7" class="box"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

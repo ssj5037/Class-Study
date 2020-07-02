@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .box {
+            /* border: 10px solid black; */
+            width: 690px;
+            margin: 10px auto;
+        }
+
+        .box div {
+            width: 126px;
+            height: 126px;
+            border-top: 10px solid black;
+            border-left: 10px solid black;
+            border-bottom: 10px solid black;
+            float: left;
+        }
+
+        .box div:last-child {border-right: 10px solid black;}
+
+        .box::after {
+            content: ' ';
+            display: block;
+            clear: both;
+        }
+        #box1 { margin-top: 100px; } 
+
+        #box1 div {overflow: hidden;}
+        #box1 img { 
+            transition: transform .5s;
+            transform: translate(-126px, 0px);
+            }
+        #box1 div:hover img {
+            transform: translate(0px, 0px);
+        }
+
+        #box2 img {
+            transition: opacity .5s;
+            opacity: 0;
+        }
+        #box2 div:hover img {
+            opacity: 1;
+        }
+
+        #box3 img {
+            transition: transform .5s;
+            transform: scale(0, 0);
+        }
+        #box3 div:hover img {
+            transform: scale(1, 1);
+        }
+
+        #box4 div {overflow: hidden;}
+        #box4 img {
+            transition: transform .5s;
+            transform: translate(0px, -126px) rotate(-360deg) scale(0, 0);
+         }
+        #box4 div:hover img {
+            transform: translate(0px, 0px) rotate(0) scale(1, 1);
+        }
+
+    </style>
+</head>
+<body>
+    <div id="box1" class="box">
+        <div><img src="../images/rect_icon01.png" alt=""></div>
+        <div><img src="../images/rect_icon02.png" alt=""></div>
+        <div><img src="../images/rect_icon03.png" alt=""></div>
+        <div><img src="../images/rect_icon04.png" alt=""></div>
+        <div><img src="../images/rect_icon05.png" alt=""></div>
+    </div>
+    <div id="box2" class="box">
+        <div><img src="../images/rect_icon01.png" alt=""></div>
+        <div><img src="../images/rect_icon02.png" alt=""></div>
+        <div><img src="../images/rect_icon03.png" alt=""></div>
+        <div><img src="../images/rect_icon04.png" alt=""></div>
+        <div><img src="../images/rect_icon05.png" alt=""></div>
+    </div>
+    <div id="box3" class="box">
+        <div><img src="../images/rect_icon01.png" alt=""></div>
+        <div><img src="../images/rect_icon02.png" alt=""></div>
+        <div><img src="../images/rect_icon03.png" alt=""></div>
+        <div><img src="../images/rect_icon04.png" alt=""></div>
+        <div><img src="../images/rect_icon05.png" alt=""></div>
+    </div>
+    <div id="box4" class="box">
+        <div><img src="../images/rect_icon01.png" alt=""></div>
+        <div><img src="../images/rect_icon02.png" alt=""></div>
+        <div><img src="../images/rect_icon03.png" alt=""></div>
+        <div><img src="../images/rect_icon04.png" alt=""></div>
+        <div><img src="../images/rect_icon05.png" alt=""></div>
+    </div>
+</body>
+</html>

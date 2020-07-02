@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- ex18_screen.html -->
+    <!-- 
+
+        BOM
+
+        window
+            - screen
+            - location
+            - history
+            - document
+                - image
+                - link
+                - form
+                    - textbox
+                    - radio
+                        -option
+                    - select
+                    - file
+                    - button
+
+     -->
+
+     <script>
+
+        // 모니터 해상도
+        console.log(window.screen.width); //1920
+        console.log(window.screen.height); //1080
+
+        // 실제 작업 공간 크기 (***)
+        // 40 차이가 나는 것은 작업표시줄 떄문임
+        console.log(window.screen.availWidth); //1920
+        console.log(window.screen.availHeight); //1040
+        
+        // landscape : 가로 / pivot : 세로 (*)
+        // primary : 메인 모니터 (첫번째 모니터)
+        console.log(window.screen.orientation); //landscape-primary
+        
+        // 색상
+        console.log(window.screen.colorDepth); //24bit color
+
+     </script>
+</body>
+</html>

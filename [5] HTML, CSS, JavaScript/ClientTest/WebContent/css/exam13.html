@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 650px;
+            height: 800px;
+            border: 10px solid black;
+            margin: 100px auto;
+        }
+
+        #box div {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 10px solid black;
+            float: left;
+            margin: 0px 10px;
+            animation-name: ballKey;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in;
+        }
+
+        #box #ball1 {background-color: red; animation-duration: 1s;}
+        #box #ball2 {background-color: orange; animation-duration: .5s;}
+        #box #ball3 {background-color: yellow; animation-duration: .7s;}
+        #box #ball4 {background-color: green; animation-duration: .6s;}
+        #box #ball5 {background-color: blue; animation-duration: .9s;}
+        #box #ball6 {background-color: purple; animation-duration: 1.2s;}
+        #box #ball7 {background-color: plum; animation-duration: .9s;}
+
+        @keyframes ballKey {
+            from {
+                transform: translate(0px, 0px);
+            } to {
+                transform: translate(0px, 730px);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="ball1"></div>
+        <div id="ball2"></div>
+        <div id="ball3"></div>
+        <div id="ball4"></div>
+        <div id="ball5"></div>
+        <div id="ball6"></div>
+        <div id="ball7"></div>
+    </div>
+</body>
+</html>

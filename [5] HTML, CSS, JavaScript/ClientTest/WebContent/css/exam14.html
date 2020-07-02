@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #content {
+            width: 1400px;
+            height: 750px;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        #content .box:last-child {border-bottom: 1px solid black;}
+        #content .box {
+            width: 1400px;
+            height: 150px;
+            border-top: 1px solid black;
+            border-left: 1px solid black;
+            border-right: 1px solid black;
+        }
+
+        #content .box .ball {
+            border: 1px solid ;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            font-size: 70px;
+            font-weight: bold;
+            position: absolute;
+        }
+
+        #content .box #ball1 {background-color: tomato; transition: transform 6s; top:49px;}
+        #content .box #ball2 {background-color: gold; transition: transform 4s; top:200px;}
+        #content .box #ball3 {background-color: orange; transition: transform 5s; top:351px;}
+        #content .box #ball4 {background-color: yellowgreen; transition: transform 6.5s; top:502px}
+        #content .box #ball5 {background-color: cornflowerblue; transition: transform 4.5s; top:653px}
+
+        #content .ball {
+            transform: translate(0px, 0px) rotate(-1440deg);
+        }
+
+        #content:hover .ball {
+            transform: translate(1298px, 0px);
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <div class="box"><div id="ball1" class="ball">A</div></div>
+        <div class="box"><div id="ball2" class="ball">B</div></div>
+        <div class="box"><div id="ball3" class="ball">C</div></div>
+        <div class="box"><div id="ball4" class="ball">D</div></div>
+        <div class="box"><div id="ball5" class="ball">E</div></div>
+    </div>
+</body>
+</html>
