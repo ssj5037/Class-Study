@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="button" value="서울시 강남구 역삼동" name="btn1">
+        <input type="button" value="서울시 강남구 대치동" name="btn2">
+        <input type="button" value="서울시 강남구 도곡동" name="btn3">
+    </form>
+
+    <script>
+
+        var btn1 = document.all.btn1;
+        var btn2 = document.all.btn2;
+        var btn3 = document.all.btn3;
+
+        btn1.onclick = function () {
+            opener.document.all.num.value = "06232";
+            opener.document.all.add.value = btn1.value;
+            window.close();
+        }
+
+        btn2.onclick = function () {
+            opener.document.all.num.value = "06291";
+            opener.document.all.add.value = btn2.value;
+            window.close();
+        }
+
+        btn3.onclick = function () {
+            opener.document.all.num.value = "06267";
+            opener.document.all.add.value = btn3.value;
+            window.close();
+        }
+
+    </script>
+</body>
+</html>

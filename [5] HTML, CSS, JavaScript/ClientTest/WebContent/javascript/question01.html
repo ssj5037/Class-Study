@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #txt {
+            width: 300px;
+            border: 0px solid black;
+            display: block;
+            font-size: 10em;
+            color: #444;
+            font-weight: bold;
+            margin: 0px auto;
+            background-color: white;
+            /* text-align: center; */
+        }
+
+        div {
+            width: 300px;
+            margin: 0px auto;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <input type="text" value="00" name="txt" id="txt" disabled>
+    <div>
+        <img src="../images/0.png" alt="" name="tens">
+        <img src="../images/0.png" alt="" name="ones">
+    </div>
+
+    <script>
+
+        var tens = document.images.tens;
+        var ones = document.images.ones;
+        var txt = document.all.txt;
+
+        var i=0, j=0;
+
+        window.onmousedown = function () {
+            if (event.buttons == 1) {
+                i++;
+                if (i>9) i=0, j++;
+                if(j>9) j=0;
+                ones.src = "../images/" + i + ".png";
+                tens.src = "../images/" + j + ".png";
+                txt.value = j * 10 + i;
+            }
+        }
+
+    </script>
+</body>
+</html>

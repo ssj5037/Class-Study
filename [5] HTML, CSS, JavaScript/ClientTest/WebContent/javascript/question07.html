@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main {
+            width: 510px;
+            margin: 100px auto;
+        }
+        #content {
+            width: 510px;
+            /* border: 1px solid black; */
+        }
+        img {
+            border: 10px solid #bbb;
+            margin: 10px;
+        }
+        #button {
+            width: 510px;
+            /* border: 1px solid black; */
+        }
+        input {
+            border: 10px solid #bbb;
+            width: 230px;
+            margin: 10px;
+            font-size: 2.2em;
+            font-variant: small-caps;
+            /* font-weight: bold; */
+            color: #555;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="content">
+            <img src="../images/rect_icon01.png" name="img1">
+            <img src="../images/rect_icon02.png" name="img2">
+            <img src="../images/rect_icon03.png" name="img3">
+            <img src="../images/rect_icon04.png" name="img4">
+            <img src="../images/rect_icon05.png" name="img5">
+            <img src="../images/rect_icon06.png" name="img6">
+            <img src="../images/rect_icon07.png" name="img7">
+            <img src="../images/rect_icon08.png" name="img8">
+            <img src="../images/rect_icon09.png" name="img9">
+        </div>
+        <div id="button">
+            <input type="button" name="reset" id="reset" value="reset">
+            <input type="button" name="input" id="input" value="input">
+        </div>
+    </div>
+
+    <script>
+
+        var reset = document.all.reset;
+        var input = document.all.input;
+        var list = "";
+
+        for (var i=1; i<=9; i++) {
+            document.all["img" + i].onmouseover = function () {
+                event.srcElement.src = "../images/rect_icon10.png";
+                list += event.srcElement.name.substr(3,3);
+                console.log(list);
+            }
+        }
+
+        function rs () {
+            for (var i=1; i<=9; i++) {
+                document.all["img"+i].src = "../images/rect_icon0" + i +".png";
+                list = "";
+            }
+        }
+        reset.onclick = rs;
+
+        // reset.onclick = rs; >> rs 함수 자체를 넣음
+        // reset.onclick = rs(); >> rs 함수의 반환값을 넣음
+
+        input.onclick = function () {
+            if (list == "14789") {
+                location.href="http://google.com";
+            } else {
+                alert("Error!!");
+                rs();
+                
+            }
+        }
+
+    </script>
+</body>
+</html>

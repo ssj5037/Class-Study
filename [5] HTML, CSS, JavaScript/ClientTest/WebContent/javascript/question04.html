@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td:first-child {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>우편 번호 검색</h1>
+
+    <table>
+        <tr>
+            <td>우편번호</td>
+            <td>
+                <input type="text" name="num" id="num">
+                <input type="button" value="우편번호검사하기" name="check" id="check">
+            </td>
+        </tr>
+        <tr>
+            <td>주소</td>
+            <td><input type="text" name="add"" id="add"></td>
+        </tr>
+        <tr>
+            <td>상세주소</td>
+            <td><input type="text" name="addDet" id="addDet"></td>
+        </tr>
+    </table>
+
+    <script>
+
+        var num = document.all.num;
+        var check = document.all.check;
+        var add = document.all.add;
+        var addDet = document.all.addDet;
+
+        var result;
+
+        check.onclick = function () {
+            result = window.open("question04_child.html", "check", "width=300, height=300");
+            addDet.focus();
+        };
+
+    </script>
+</body>
+</html>

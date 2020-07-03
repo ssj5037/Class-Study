@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            margin: 0px auto;
+            border: 1px solid #999;
+            width: 540px;
+            padding: 10px;
+        }
+        #txt {
+            margin: 10px auto;
+            width: 540px;
+            height: 20px;
+            padding: 10px;
+            font-size: 1.5em;
+            background-color: white;
+            display: block;
+            border: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="../images/img01.jpg" name="img01" data-change="4" data-origin="1">
+        <img src="../images/img02.jpg" name="img02" data-change="5" data-origin="2">
+        <img src="../images/img03.jpg" name="img03" data-change="6" data-origin="3">
+    </div>
+    <input type="text" name="txt" id="txt" disabled>
+
+    <script>
+
+        var txt = document.all.txt;
+
+        for (var i=1; i<=3; i++) {
+            document.all["img0" + i].onmouseover = function () {
+                event.srcElement.src = "../images/img0" + event.srcElement.dataset["change"] + ".jpg";
+                if (event.srcElement.dataset["origin"]=="1") {
+                    txt.value = "'스키'타는 사람이 '당근'으로 변했습니다."
+                }
+                if (event.srcElement.dataset["origin"]=="2") {
+                    txt.value = "'해바라기'가 '피망'으로 변했습니다."
+                }
+                if (event.srcElement.dataset["origin"]=="3") {
+                    txt.value = "'나무'가 '개'가 되었습니다."
+                }
+            }
+            document.all["img0" + i].onmouseout = function () {
+                event.srcElement.src = "../images/img0" + event.srcElement.dataset["origin"] + ".jpg";
+                txt.value = "";
+            }
+        }
+
+    </script>
+</body>
+</html>
