@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="form1">
+        <img src="../images/catty01.png" name="catty01">
+        <img src="../images/catty02.png" name="catty02">
+        <img src="../images/catty03.png" name="catty03">
+        <img src="../images/catty04.png" name="catty04">
+        <img src="../images/catty05.png" name="catty05">
+    </form>
+
+    <script>
+
+        for (var i=1; i<=5; i++) {
+            document.form1["catty0" + i].onmouseover = function () {
+                event.srcElement.width *= 1.03;
+            };
+            document.form1["catty0" + i].onclick = function () {
+                var result = confirm("reset?");
+                if (result == true) {
+                    event.srcElement.width = 128;
+                }
+            };
+        }
+
+    </script>
+</body>
+</html>

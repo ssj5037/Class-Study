@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        #watch {
+            border: 1px solid #999;
+            padding: 30px;
+            width: 580px;
+            margin: 100px auto 10px auto;
+            vertical-align: center;
+        }
+
+        #watch img { width: 80px; }
+
+        #btn {
+            width: 480px;
+            margin: 10px auto;
+        }
+
+        #btn input {
+            width: 120px;
+            height: 40px;
+            background-color: white;
+            border: 1px solid #999;
+            font-size: 1em;
+            color: #444;
+            outline: none;
+        }
+
+        #btn input:disabled {background-color: #eee;}
+        #btn input:enabled {background-color: white;}
+
+        input[type="text"] {
+            border: none;
+            font-size: 7em;
+            text-align: center;
+            color: #444;
+        }
+
+        .txt1 { width: 120px; }
+        .txt { width: 25px; }
+
+
+
+
+    </style>
+</head>
+<body>
+    <div id="watch">
+        <img src="../images/0.png" name="img6">
+        <img src="../images/0.png" name="img5">
+        <input type="text" name="txt" class="txt" value=":" readonly>
+        <img src="../images/0.png" name="img4">
+        <img src="../images/0.png" name="img3">
+        <input type="text" name="txt" class="txt" value=":" readonly>
+        <img src="../images/0.png" name="img2">
+        <img src="../images/0.png" name="img1">
+    </div>
+    <div id="btn">
+        <input type="button" name="btnStart" value="시작">
+        <input type="button" name="btnPause" value="멈춤" disabled>
+        <input type="button" name="btnEnd" value="종료" disabled>
+    </div>
+
+    <script>
+
+        var img6 = document.images["img6"];
+        var img5 = document.images["img5"];
+        var img4 = document.images["img4"];
+        var img3 = document.images["img3"];
+        var img2 = document.images["img2"];
+        var img1 = document.images["img1"];
+
+        var btnStart = document.all.btnStart;
+        var btnPause = document.all.btnPause;
+        var btnEnd = document.all.btnEnd;
+
+        var timer = 0;
+        var milliOne = 0, milliTen = 0,
+             secOne = 0, secTen = 0, minOne = 0, minTen = 0;
+
+        btnStart.onclick = function () {
+            // console.log(1);
+            // btnStart.style.backgroundColor = '#aaaaaa';
+            // btnPause.style.backgroundColor = '#FFFFFF';
+            // btnEnd.style.backgroundColor =  '#FFFFFF';
+            btnStart.disabled = true;
+            btnPause.disabled = false;
+            btnEnd.disabled = false;
+            if (timer == 0) {
+                timer = setInterval(function() {
+                    milliOne++;
+                    if(milliOne > 9) {
+                        milliOne = 0;
+                        milliTen++;
+                        if(milliTen > 9) {
+                            milliTen = 0;
+                            secOne++;
+                            if(secOne > 9) {
+                                secOne = 0;
+                                secTen++;
+                                if(secTen > 5) {
+                                    secTen = 0;
+                                    minOne++;
+                                    if(minOne > 9) {
+                                        minOne = 0;
+                                        minTen++;
+                                        if(minTen > 5) {
+                                            minTen = 0;
+                                        }
+                                        img6.src = "../images/" + minTen + ".png";
+                                    }
+                                    img5.src = "../images/" + minOne + ".png";
+                                }
+                                img4.src = "../images/" + secTen + ".png";
+                            }
+                            img3.src = "../images/" + secOne + ".png";
+                        }
+                        img2.src = "../images/" + milliTen + ".png";
+                    }
+                    img1.src = "../images/" + milliOne + ".png";
+                }, 10);
+            }
+            // console.log(timer);
+        };
+        
+        btnPause.onclick = function () {
+            // console.log(2);
+            btnStart.disabled = false;
+            btnPause.disabled = true;
+            btnEnd.disabled = false;
+            clearInterval(timer);
+            timer = 0;
+        }
+
+        btnEnd.onclick = function () {
+            btnStart.disabled = false;
+            btnPause.disabled = true;
+            btnEnd.disabled = true;
+            milliOne = milliTen = secOne = secTen = minOne = minTen = 0;
+            clearInterval(timer);
+            timer = 0;
+        }
+
+    </script>
+</body>
+</html>

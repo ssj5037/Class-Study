@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            border: 1px solid #999;
+            width: 900px;
+            height: 570px;
+            padding: 20px;
+        }
+
+        #txtCopy, #txtInput {
+            display: block;
+            width: 900px;
+            height: 250px;
+            font-size: 1.2em;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            outline: none;
+        }
+
+        hr {margin: 10px 0px;}
+
+        #box input {
+            width: 60px;
+            height: 30px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <textarea name="txtCopy" id="txtCopy" cols="30" rows="10" readonly></textarea>
+        <hr>
+        <textarea name="txtInput" id="txtInput" cols="30" rows="10"></textarea>
+        <input type="button" value="시작" name="btnStart">
+        <input type="button" value="정지" name="btnStop">
+    </div>
+
+    <script>
+
+        var txtCopy = document.all.txtCopy;
+        var txtInput = document.all.txtInput;
+
+        var btnStart = document.all.btnStart;
+        var btnStop = document.all.btnStop;
+        
+        var timer = 0;
+        var n = 0;
+
+        btnStart.onclick = function () {
+            
+            if (timer == 0) {
+                timer = setInterval (function() {
+                    txtCopy.value += txtInput.value.substr(n,1);
+                    n++;
+                }, 50);
+            }
+        }
+
+        btnStop.onclick = function () {
+            clearInterval(timer);
+            timer = 0;
+        }
+
+    </script>
+</body>
+</html>

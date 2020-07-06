@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid #888;
+            padding: 20px;
+        }
+        form, option {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        label {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label, select, input {
+            display: block;
+            width: 150px;
+        }
+
+        input {
+            font-size: 18px;
+            padding: 2px;
+            margin: 10px;
+        }
+
+        option {
+            color: #333;
+            padding: 5px;
+        }
+
+        select {
+            outline: none;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <form name="form1">
+        <table>
+            <tr>
+                <td>
+                    <label for="ban">차단된 친구</label>
+                    <select name="ban" id="ban" size=9>
+                        <option value="1">권예진</option>
+                        <option value="2">권준혁</option>
+                        <option value="3">김동식</option>
+                        <option value="4">김세진</option>
+                        <option value="5">김여정</option>
+                        <option value="6">노형준</option>
+                        <option value="7">박민선</option>
+                        <option value="8">백강현</option>
+                        <option value="9">변기현</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="button" value="Add ▷" name="add">
+                    <input type="button" value="◁ Remove" name="remove">
+                    <input type="button" value="Add All ▷▷" name="addall">
+                    <input type="button" value="◁◁ Remove All" name="removeall">
+                </td>
+                <td>
+                    <label for="accept">허용된 친구</label>
+                    <select name="accept" id="accept" size=9></select>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+
+        var ban = document.form1.ban;
+        var accept = document.form1.accept;
+        var add = document.form1.add;
+        var remove = document.form1.remove;
+        var addall = document.form1.addall;
+        var removeall = document.form1.removeall;
+
+        add.onclick = function () {
+            var op = new Option();
+            op.text = ban.options[ban.selectedIndex].text;
+            op.value = ban.options[ban.selectedIndex].value;
+            accept.options.add(op);
+            ban.options.remove(ban.selectedIndex);
+        }
+
+        remove.onclick = function () {
+            var op = new Option();
+            op.text = accept.options[accept.selectedIndex].text;
+            op.value = accept.options[accept.selectedIndex].value;
+            ban.options.add(op);
+            accept.options.remove(accept.selectedIndex);
+        }
+
+        addall.onclick = function () {
+            console.log(ban.options.length);
+            for (var i=ban.options.length-1; i>=0; i--) {
+                var op = new Option();
+                op.text = ban.options[0].text;
+                op.value = ban.options[0].value;
+                accept.options.add(op);
+                ban.options.remove(0);
+            }
+        }
+        
+        removeall.onclick = function () {
+            console.log(accept.options.length);
+            for (var i=accept.options.length-1; i>=0; i--) {
+                var op = new Option();
+                op.text = accept.options[0].text;
+                op.value = accept.options[0].value;
+                ban.options.add(op);
+                accept.options.remove(0);
+            }
+        }
+
+
+    </script>
+</body>
+</html>
