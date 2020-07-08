@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		#box1 {
+			border: 1px solid black;
+			width: 200px;
+			height: 200px;
+			background-color: gold;
+		}
+	</style>
+</head>
+<body>
+	<!-- ex41_style.html -->
+	<h1>CSS 조작</h1>
+
+	<input type="button" value="버튼1" id="btn1">
+	<input type="button" value="버튼2" id="btn2">
+	<hr>
+	<div id="box1">상자</div>
+
+	<hr>
+
+	<input type="button" value="  +  " id="big">
+	<input type="button" value="  -  " id="small">
+	<p id="p1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum laudantium nisi sed omnis at eligendi? Perferendis mollitia voluptates facilis ab nulla fuga iure autem vel commodi dolor, ut consectetur eum quia sint culpa sed explicabo. Alias dignissimos vero minus repudiandae ipsum, fugit dolorum esse voluptatem architecto modi porro, atque excepturi, nemo reiciendis perspiciatis autem beatae doloribus expedita tenetur delectus enim nam voluptas accusamus. Reiciendis earum nam quisquam eos, minus dicta praesentium iusto corporis deleniti accusantium, adipisci, sed optio molestias temporibus velit! Dolore non quisquam autem provident pariatur nulla consectetur, est assumenda nihil amet reprehenderit iusto dolores dolor adipisci voluptatum voluptas nesciunt doloribus sit sequi. Iusto error harum neque quae amet numquam omnis similique maxime consectetur eaque. Nulla, eius! Suscipit, delectus autem! Quaerat totam libero quae velit cupiditate, dolorum obcaecati cum tempora maxime rerum eveniet unde adipisci recusandae vitae dignissimos, accusantium sunt dolore autem! Architecto beatae in reprehenderit non quaerat blanditiis similique porro cupiditate. Ducimus, debitis. Eligendi incidunt blanditiis iste aut illum ea, suscipit placeat, nemo accusamus dicta fuga! Modi porro rem esse! Eaque fugiat dolorem recusandae totam numquam provident pariatur consectetur, maxime ratione neque, blanditiis qui odit officia magni, quas delectus vitae voluptatibus deserunt excepturi! Minus quaerat quo veritatis voluptas.</p>
+
+	<script>
+		var btn1 = document.getElementById("btn1");
+		var btn2 = document.getElementById("btn2");
+		var box1 = document.getElementById("box1");
+
+		var big = document.getElementById("big");
+		var small = document.getElementById("small");
+		var p1 = document.getElementById("p1");
+
+		btn1.addEventListener("click", function() {
+
+			//JavaScript -> HTML 조작 -> Attirubte
+			//JavaScript -> CSS 읽기/쓰기
+
+			//속성명 패턴
+			//1. CSS 속성명을 그대로 사용한다.
+			//2. '-'이 들어있는 속성명 -> 캐멀 표기법으로 전환
+			//3. '-'이 들어있는 속성명 -> 맵 형식
+
+			//속성값 패턴
+			//1. 숫자(단위) -> 문자열
+			//2. 열거형 -> 문자열
+			//3. 색상 -> 문자열
+			//4. 함수 -> 문자열
+
+			box1.style.width = "400px";
+			//box1.style.background-color = "tomato";
+			//box1.style.backgroundColor = "tomato";
+			box1.style["background-color"] = "royalblue";
+			box1.style.textAlign = "center";
+			box1.style.backgroundImage = "url(../images/catty01.png)";
+
+		});
+
+		btn2.addEventListener("click", function() {
+
+			//CSS 읽기
+			// - JavaScript를 사용해서 CSS의 속성값을 읽을 때
+			//	1. 임베디드 스타일 시트 or 외부 스타일 시트로 정의된 값을 읽을 수 없다.
+			// 	2. 인라인 스타일 시트로 정의된 값을 읽을 수 있다.
+			//console.log(box1.style.width);
+
+			//상자 키우기
+			//console.log(parseInt(box1.style.width) + 50);
+			//box1.style.width = parseInt(box1.style.width) + 50 + "px";
+
+
+			//해당 태그가 가지고 있는 모든 CSS 값(인라인, 임베디드, 외부, 초기값)
+			//console.log(getComputedStyle(box1));
+
+			//console.log(getComputedStyle(box1).width);
+
+			box1.style.width = parseInt(getComputedStyle(box1).width) + 50 + "px";
+
+			console.log(getComputedStyle(box1).display);
+			console.log(getComputedStyle(box1).position);
+
+		});
+
+
+		big.onclick = function() {
+			//p1.style.fontSize + 5
+			//console.log(getComputedStyle(p1).fontSize);
+			p1.style.fontSize = parseInt(getComputedStyle(p1).fontSize) + 2 + "px";
+		};
+		small.onclick = function() {
+			p1.style.fontSize = parseInt(getComputedStyle(p1).fontSize) - 2 + "px";
+		};
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #tbl1 {
+            border-collapse: collapse;
+            text-align: center;
+            font-size: 5em;
+            font-weight: bold;
+            color: #555;
+            margin: 200px auto 0px auto;
+        }
+        #tbl1 td {
+            border: 1px solid #aaa;
+            width: 120px;
+            height: 120px;
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+    <table id="tbl1">
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+    </table>
+
+    <script>
+
+        var tr = document.getElementById("tbl1").firstElementChild.children;
+
+        for (var i=0; i<tr.length; i++) {
+
+            var td = tr[i].children;
+
+            for (var j=0; j<td.length; j++) {
+                
+                td[j].onmousedown = function () {
+
+                    var n = event.srcElement.innerText;
+
+                    if (event.buttons == 1) {
+                        n++;
+                        event.srcElement.innerText = n;
+                    } else if (event.buttons == 2) {
+                        if (n == 0) {
+                            event.srcElement.onmousedown = null;
+                            event.srcElement.bgColor = "#aaaaaa";
+                        } else if (n > 0) {
+                            n--;
+                            event.srcElement.innerText = n;   
+                        }
+                    }
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>
