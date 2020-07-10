@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+
+		.icon {
+			/* border: 1px solid black; */
+			width: 150px;
+			height: 150px;
+			position: absolute;
+		}
+
+	</style>
+</head>
+<body oncontextmenu="return false;">
+	<!-- ex43_style.html -->
+
+	<script>
+
+		window.addEventListener("mousedown", function() {
+
+			if (event.buttons == 1) {
+
+				var icon = document.createElement("img");
+
+				//box.style.border = "1px solid black";
+				//box.style.width = "150px";
+				//box.style.height = "150px";
+				//box.style.position = "absolute";
+
+				icon.className = "icon";
+				//box.innerText = "상자";
+
+                icon.src = "../images/face03.png";
+
+				icon.style.left = event.clientX - 75 + "px";
+				icon.style.top = event.clientY - 75 + "px";
+
+				document.body.appendChild(icon);
+
+			}
+
+		});
+
+	</script>
+</body>
+</html>

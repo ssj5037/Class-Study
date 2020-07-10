@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #icon {
+            display: block;
+            width: 120px;
+            height: 120px;
+            position: absolute;
+            top: 200px;
+        }
+    </style>
+</head>
+<body>
+    <img src="../images/face10.png" id="icon" style="left:400px;">
+
+    <script>
+        var icon = document.getElementById("icon");
+        
+        // console.log(icon.currentStyle.left);
+        // console.log(icon.currentStyle.top);
+
+        icon.onmouseover = function() {
+            var oldX = parseInt(icon.style.left);
+            console.log(oldX);
+            
+            if (event.clientX >= oldX && event.clientX <= oldX + 60) {
+                console.log(event.clientX);
+                // 왼쪽에 마우스 -> 오른쪽으로 이동
+                icon.style.left = oldX + 30 + "px";
+            } else if (event.clientX > oldX + 60 && event.clientX <= oldX + 120) {
+                console.log(event.clientX);
+                // 오른쪽에 마우스 -> 왼쪽으로 이동
+                icon.style.left = oldX - 30 + "px";
+            }
+        };
+    </script>
+</body>
+</html>

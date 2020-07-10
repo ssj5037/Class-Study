@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #cat {
+            position: absolute;
+            transition: all 1s;
+            transition-timing-function: linear;
+            left: 0px;
+            top: 0px;
+        }
+
+        #start {
+            position: absolute;
+            top: 200px;
+        }
+    </style>
+</head>
+<body>
+    <img src="../images/catty01.png" id="cat">
+    <input type="button" value="시작" id="start">
+
+    <script>
+        var cat = document.getElementById("cat");
+        var start = document.getElementById("start");
+        var listX = [];
+        var listY = [];
+        var timer = 0;
+        var index = 0
+
+        window.onmouseover = function() {
+            if (event.ctrlKey) {
+                console.log(event.clientX);
+                console.log(event.clientY);
+                listX.push(event.clientX - 64 + "px");
+                listY.push(event.clientY - 64 + "px");
+            }
+        }
+
+        start.onclick = function() {
+            timer = setInterval(function() {
+                cat.style.left = listX[index];
+                cat.style.top = listY[index];
+                index++;
+            }, 100)
+        }
+        
+    </script>
+</body>
+</html>

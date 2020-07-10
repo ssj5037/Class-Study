@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #tbl {
+            border-collapse: collapse;
+            margin: 100px auto 10px auto;
+        }
+
+        td {
+            border: 1px solid #999;
+            width: 100px;
+            height: 100px;
+            background-size: contain;
+        }
+
+        #start {
+            background-image: url("../images/beer.png");
+            background-size: contain;
+            cursor: pointer;
+        }
+
+        #home {
+            background-image: url("../images/catHome.png");
+            background-size: contain;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <table id="tbl">
+        <tr>
+            <td id="start"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td id="home"></td>
+        </tr>
+    </table>
+
+    <script>
+
+		var index = 0;
+        var td = document.getElementsByTagName("td");
+        var start = document.getElementById("start");
+        var home = document.getElementById("home");
+        var timer = 0;
+
+        start.onclick = function () {
+        
+        if (timer == 0) {
+                
+                timer = setInterval(function() {
+                    
+                    clear();
+        
+                    index++;
+                    td[index].style.backgroundImage = 'url("../images/catty14.png")';
+                    if (index == 24) {
+                        clearInterval(timer);
+                        timer = 0;
+                    }
+                }, 500)
+            }
+        }
+        
+		function clear () {
+			for (var i=1; i<td.length-1; i++) {
+				td[i].style.backgroundImage = "";
+			}
+		}
+    </script>
+</body>
+</html>

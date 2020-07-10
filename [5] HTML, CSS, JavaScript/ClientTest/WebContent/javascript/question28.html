@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+
+		.icon {
+			/* border: 1px solid black; */
+			width: 150px;
+			height: 150px;
+			position: absolute;
+		}
+
+	</style>
+</head>
+<body oncontextmenu="return false;">
+	<!-- ex43_style.html -->
+
+	<script>
+
+		window.addEventListener("mousedown", function() {
+
+            var icon = document.createElement("img");
+
+            icon.className = "icon";
+
+            var rnd = Math.floor(Math.random() * 38 + 1);
+            if (rnd < 10) {
+                rnd = "0" + rnd;
+            } else if (rnd == 17) {
+                rnd--;
+            }
+
+            // console.log(rnd);
+
+            icon.src = "../images/face" + rnd + ".png";
+
+            icon.style.left = event.clientX - 75 + "px";
+            icon.style.top = event.clientY - 75 + "px";
+
+            document.body.appendChild(icon);
+            
+            var firstChild = document.getElementsByClassName("icon")[0];
+
+            if (document.getElementsByClassName("icon").length > 10) {
+                document.body.removeChild(firstChild);
+            }
+		});
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- ex53.html -->
+
+    <script>
+
+        // 프로퍼티 초기화 단축, Property Initializer Shorthand
+
+        // 생성자 함수
+        function createPerson(name, age) {
+            // return {
+            //     // 객체 반환
+            //     name: name,
+            //     age: age
+            // };
+            return {
+                // 프로퍼티 이름과 변수 이름이 같으면 한번만 적어도 된다.
+                name,
+                age
+            };
+
+        }
+
+        // 객체 생성
+        var p = createPerson("홍길동", 20);
+        console.log(p);
+
+
+        // 간결한 메소드, Concise Method
+        var cat = {
+            sound: "야옹",
+            // soundPlay: function() {
+            //     console.log(this.sound);
+            // }
+            soundPlay() {
+                console.log(this.sound);
+            }
+        };
+        cat.soundPlay();
+
+
+        // Class 표현식
+        // - 생성자 함수와 유사함
+
+        // 대문자로 시작하는거 생성자 함수. 함부로 대문자로 시작하지말라
+        function Person(name, age) {
+
+            this.name = name;
+            this.age = age;
+            // 객체 메소드
+            this.hi = function() {
+                console.log(this.name +" hi~ :f");
+            }
+        }
+        var p1 = new Person("홍길동", 20);
+        console.log(p1);
+        p1.hi();
+        
+        // 표기법을 class와 유사하게 쓴 것 뿐이다.
+        class User {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            hi() {
+                console.log(this.name +" hi~ :c");
+            }
+            minfo() {
+                return this.name + ":" + this.age;
+            }
+            // 일종의 프로퍼티..
+            // Getter
+            get info() {
+                return this.name + ":" + this.age;
+            }
+        }
+        var u1 = new User("홍길동", 20);
+        console.log(u1);
+        u1.hi();
+        console.log(u1.minfo());
+        //함수를 변수처럼 쓸 수 있음.
+        console.log(u1.info);
+
+
+        class Animal {
+            constructor(name) {
+                this.name = name;
+            }
+            info() {
+                console.log(this.name);
+            }
+        }
+
+        class Dog extends Animal {
+            bow() {
+                console.log("멍멍");
+            }
+        }
+        var dog = new Dog("멍멍이");
+        dog.info();
+        dog.bow();
+
+
+        // 
+        // ES6 + jQuery + Bootstrap
+
+    </script>
+</body>
+</html>

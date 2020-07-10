@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            border: 5px solid black;
+            width: 150px;
+            height: 150px;
+            background-color: gold;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+        #cat {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <!-- ex47_style.html -->
+    <div id="box"></div>
+    <img src="../images/catty01.png" id="cat">
+
+    <script>
+
+        // Drag & Drop
+        var box = document.getElementById("box");
+        var cat = document.getElementById("cat");
+        var isDown = false;
+        var oldX, oldY;
+
+        // box.onmousedown = function() {
+        //     isDown = true;
+        // };
+
+        // box.onmouseup = function() {
+        //     isDown = false;
+        // };
+
+        // box.onmousemove = function() {
+        //     if (isDown) {
+        //         box.style.left = event.clientX - 80 + "px";
+        //         box.style.top = event.clientY - 80 + "px";
+        //     }
+        // };
+
+        // -> 마우스를 빠르게 움직이면 박스가 속도를 못따라옴
+        // -> 주체를 box에서 window로 바꾸어줌
+
+        // -> 박스가 아닌 화면 어디든 눌러도 박스가 호출되어 불러와짐
+        // -> srcElement, 소스 주체가 box일 때만 움직일 수 있도록 조건 걸어줌
+
+        // -> 박스 어느 곳을 눌러도 중앙에 맞춰지는 현상
+        // -> 박스 왼쪽 상단을 0, 0으로 클릭된 곳의 좌표를 알려주는 offsetX, Y를 이용한다.
+
+        var temp;
+
+        window.onmousedown = function () {
+            // console.log(event.srcElement.nodeName);
+            if (event.srcElement.id == "box" || event.srcElement.id == "cat") {
+                temp = event.srcElement; // box or cat
+                isDown = true;
+                oldX = event.offsetX + 5;
+                oldY = event.offsetY + 5;
+            }
+        };
+
+        window.onmouseup = function () {
+            isDown = false;
+        };
+
+        window.onmousemove = function () {
+            if (isDown) {
+                temp.style.left = event.clientX - oldX + "px";
+                temp.style.top = event.clientY - oldY + "px";
+
+                // 고스트 이미지 제거
+                // (div는 상관없는데 이미지에 나타남)
+                event.preventDefault(); // 현재 발생하는 기본적인 행동을 하지마시오.
+                return false; // 현재 발생하는 기본적인 행동을 하지마시오.
+                // 위 아래 모두 같은 명령임. 위의 명령이 적용되지 않는 브라우저가 있기 때문에 안전장치로 아래의 것을 적어줌.
+            }
+        };
+
+    </script>
+</body>
+</html>
