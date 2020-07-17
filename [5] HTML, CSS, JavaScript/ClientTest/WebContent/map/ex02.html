@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fc9f113fd9c2f303650605112cb4c4f6"></script>
+</head>
+<body>
+    <!-- ex02.html -->
+
+    <h1>좌표 이동하기 + 레벨 바꾸기</h1>
+
+    <div id="map" style="width:1100px;height:600px;"></div>
+
+    <hr>
+
+    <input type="button" value="서울역으로 이동하기" id="btn1">
+    <input type="button" value="역삼역으로 이동하기" id="btn2">
+    <input type="button" value="강남역으로 이동하기" id="btn3">
+
+    <script>
+
+        var container = document.getElementById('map');
+
+        var options = { 
+            center: new kakao.maps.LatLng(37.499314, 127.033240),
+            level: 3
+        };
+
+        var map = new kakao.maps.Map(container, options);
+
+        var btn1 = document.getElementById("btn1");
+        btn1.onclick = function() {
+
+            //포인트
+            var Station = new kakao.maps.LatLng(37.555205, 126.970780);
+            //map.setCenter(Station);
+            map.panTo(Station);
+
+        };
+
+        var btn2 = document.getElementById("btn2");
+        btn2.onclick = function() {
+
+            //포인트
+            var Station = new kakao.maps.LatLng(37.499314, 127.033240);
+            //map.setCenter(Station);
+            map.panTo(Station);
+
+        };
+
+        var btn3 = document.getElementById("btn3");
+        btn3.onclick = function() {
+
+            //포인트
+            var Station = new kakao.maps.LatLng(37.497939, 127.027575);
+            //map.setCenter(Station);
+            map.panTo(Station);
+
+        };
+
+    </script>
+
+</body>
+</html>

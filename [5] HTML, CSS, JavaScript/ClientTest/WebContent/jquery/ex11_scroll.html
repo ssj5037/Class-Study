@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        html, body {margin: 0; padding: 0;}
+
+        #top {
+            background-color: #c4a771;
+            height: 500px;
+            position: relative;
+            left: 0;
+            top: 0;
+        }
+
+        #top > h1 {
+            font-size: 100px;
+            width: 1000px;
+            text-align: center;
+            margin: 0px auto;
+            color: #3f3624;
+            padding-top: 150px;
+            font-variant: small-caps;
+        }
+
+        #menu {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            border-top: 1px solid #8b7750;
+            background-color: #c4a771;
+        }
+
+        #menu > span {
+            color: #3f3624;
+            font-weight: bold;
+            display: inline-block;
+            width: 100px;
+            text-align: center;
+            margin: 15px 0px;
+            border-right: 1px dashed #8b7750;
+            cursor: pointer;
+        }
+
+        #menu > span > a {
+            color: #3f3624;
+            text-decoration: none;
+        }
+
+        #menu > span:last-child { border-right: none;}
+
+        .item {
+            width: 950px;
+            margin: 50px auto;
+            color: #444;
+        }
+
+        .item > h2 {
+            border-bottom: 1px dashed gray;
+            padding-bottom: 10px;
+            color: #3f3624;
+        }
+
+        .item > .back {
+            text-align: right;
+            padding: 20px 30px 0px 0px;
+        }
+
+        .item > .back > a {
+            color: #3f3624;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+    <!-- ex11_scroll.html : 포트폴리오 페이지(원 페이지 구성) -->
+
+    <header id="top">
+        <h1>Software Developer</h1>
+        <nav id="menu">
+            <!-- <span><a href="#item1">Home</a></span>
+            <span><a href="#item2">Skill</a></span>
+            <span><a href="#item3">Portfolio</a></span>
+            <span><a href="#item4">Resume</a></span>
+            <span><a href="#item5">Education</a></span> -->
+            
+            <span data-item="item1">Home</span>
+            <span data-item="item2">Skill</span>
+            <span data-item="item3">Portfolio</span>
+            <span data-item="item4">Resume</span>
+            <span data-item="item5">Education</span>
+        </nav>
+    </header>
+    <section id="item1" class="item">
+        <!-- <input type="button" value="테스트" id="btn1"> -->
+        <h2>Home</h2>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum eius dolores non assumenda ipsam repellat officiis ea illum voluptate ullam? Delectus omnis natus sequi blanditiis modi labore reprehenderit explicabo officia?</p>
+        <p>Animi, asperiores corrupti ut temporibus impedit quaerat illum sapiente debitis consequuntur. Animi, fugiat quod illo, ratione, numquam quos molestias et praesentium voluptate dolorum veniam nostrum repellat omnis magni! Praesentium, quasi!</p>
+        <p>Nihil nisi esse, facere quas autem eos dicta voluptatum quibusdam, alias, impedit explicabo iusto voluptates qui aspernatur eaque! Veritatis quas iste debitis, repellat harum asperiores obcaecati officia magnam soluta adipisci.</p>
+        <p>Neque porro atque adipisci sint deleniti ea qui sed eos delectus distinctio non quia fuga omnis autem obcaecati, soluta animi dolorum aliquam hic voluptatum! Illo cum tenetur autem maiores optio.</p>
+        <p>Voluptates, voluptatem. Aut error doloremque optio asperiores veniam amet laborum, ducimus deleniti accusamus suscipit dolorem facere ullam similique cum ipsam nam ea architecto non corrupti reiciendis. Quis sequi voluptas quia?</p>
+        <p>Dolore, reprehenderit eum molestiae praesentium ex ad magnam quaerat corrupti eos nemo accusantium ipsum sapiente sed magni delectus doloremque laborum mollitia vero labore nihil aspernatur, odit a autem! Iusto, dolorum!</p>
+        <p>Sed ab eaque ullam, similique repellendus rerum placeat quia enim iure totam minus illo laborum sit delectus inventore hic ipsam illum. Praesentium aspernatur unde adipisci reiciendis, consequuntur ducimus voluptates in?</p>
+        <p>Adipisci sapiente laboriosam voluptatibus maiores est enim laborum voluptate tempora, minima ipsum rem expedita architecto dicta velit suscipit ullam obcaecati iure sit eligendi porro quos repellendus error. Perspiciatis, eos doloribus!</p>
+        <p>Dolor at ea adipisci animi a, provident quis aliquid voluptatum id praesentium laudantium debitis eligendi numquam eaque laborum odit repellendus quod maiores. Ut cumque praesentium, nihil qui dignissimos reprehenderit voluptates.</p>
+        <p>Saepe omnis, laboriosam nesciunt corrupti necessitatibus odit. Optio porro suscipit architecto harum reiciendis sit, sunt ratione unde iusto. Laborum quis aliquid eaque aspernatur porro dicta voluptatum id molestias repellendus debitis!</p>
+        <div class="back"><a href="#top">▲ 상단으로 돌아가기</a></div>
+    </section>
+    <section id="item2" class="item">
+        <h2>Skill</h2>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum eius dolores non assumenda ipsam repellat officiis ea illum voluptate ullam? Delectus omnis natus sequi blanditiis modi labore reprehenderit explicabo officia?</p>
+        <p>Animi, asperiores corrupti ut temporibus impedit quaerat illum sapiente debitis consequuntur. Animi, fugiat quod illo, ratione, numquam quos molestias et praesentium voluptate dolorum veniam nostrum repellat omnis magni! Praesentium, quasi!</p>
+        <p>Nihil nisi esse, facere quas autem eos dicta voluptatum quibusdam, alias, impedit explicabo iusto voluptates qui aspernatur eaque! Veritatis quas iste debitis, repellat harum asperiores obcaecati officia magnam soluta adipisci.</p>
+        <p>Neque porro atque adipisci sint deleniti ea qui sed eos delectus distinctio non quia fuga omnis autem obcaecati, soluta animi dolorum aliquam hic voluptatum! Illo cum tenetur autem maiores optio.</p>
+        <p>Voluptates, voluptatem. Aut error doloremque optio asperiores veniam amet laborum, ducimus deleniti accusamus suscipit dolorem facere ullam similique cum ipsam nam ea architecto non corrupti reiciendis. Quis sequi voluptas quia?</p>
+        <p>Dolore, reprehenderit eum molestiae praesentium ex ad magnam quaerat corrupti eos nemo accusantium ipsum sapiente sed magni delectus doloremque laborum mollitia vero labore nihil aspernatur, odit a autem! Iusto, dolorum!</p>
+        <p>Sed ab eaque ullam, similique repellendus rerum placeat quia enim iure totam minus illo laborum sit delectus inventore hic ipsam illum. Praesentium aspernatur unde adipisci reiciendis, consequuntur ducimus voluptates in?</p>
+        <p>Adipisci sapiente laboriosam voluptatibus maiores est enim laborum voluptate tempora, minima ipsum rem expedita architecto dicta velit suscipit ullam obcaecati iure sit eligendi porro quos repellendus error. Perspiciatis, eos doloribus!</p>
+        <p>Dolor at ea adipisci animi a, provident quis aliquid voluptatum id praesentium laudantium debitis eligendi numquam eaque laborum odit repellendus quod maiores. Ut cumque praesentium, nihil qui dignissimos reprehenderit voluptates.</p>
+        <p>Saepe omnis, laboriosam nesciunt corrupti necessitatibus odit. Optio porro suscipit architecto harum reiciendis sit, sunt ratione unde iusto. Laborum quis aliquid eaque aspernatur porro dicta voluptatum id molestias repellendus debitis!</p>
+        <div class="back"><a href="#top">▲ 상단으로 돌아가기</a></div>
+    </section><section id="item3" class="item">
+        <h2>Portfolio</h2>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum eius dolores non assumenda ipsam repellat officiis ea illum voluptate ullam? Delectus omnis natus sequi blanditiis modi labore reprehenderit explicabo officia?</p>
+        <p>Animi, asperiores corrupti ut temporibus impedit quaerat illum sapiente debitis consequuntur. Animi, fugiat quod illo, ratione, numquam quos molestias et praesentium voluptate dolorum veniam nostrum repellat omnis magni! Praesentium, quasi!</p>
+        <p>Nihil nisi esse, facere quas autem eos dicta voluptatum quibusdam, alias, impedit explicabo iusto voluptates qui aspernatur eaque! Veritatis quas iste debitis, repellat harum asperiores obcaecati officia magnam soluta adipisci.</p>
+        <p>Neque porro atque adipisci sint deleniti ea qui sed eos delectus distinctio non quia fuga omnis autem obcaecati, soluta animi dolorum aliquam hic voluptatum! Illo cum tenetur autem maiores optio.</p>
+        <p>Voluptates, voluptatem. Aut error doloremque optio asperiores veniam amet laborum, ducimus deleniti accusamus suscipit dolorem facere ullam similique cum ipsam nam ea architecto non corrupti reiciendis. Quis sequi voluptas quia?</p>
+        <p>Dolore, reprehenderit eum molestiae praesentium ex ad magnam quaerat corrupti eos nemo accusantium ipsum sapiente sed magni delectus doloremque laborum mollitia vero labore nihil aspernatur, odit a autem! Iusto, dolorum!</p>
+        <p>Sed ab eaque ullam, similique repellendus rerum placeat quia enim iure totam minus illo laborum sit delectus inventore hic ipsam illum. Praesentium aspernatur unde adipisci reiciendis, consequuntur ducimus voluptates in?</p>
+        <p>Adipisci sapiente laboriosam voluptatibus maiores est enim laborum voluptate tempora, minima ipsum rem expedita architecto dicta velit suscipit ullam obcaecati iure sit eligendi porro quos repellendus error. Perspiciatis, eos doloribus!</p>
+        <p>Dolor at ea adipisci animi a, provident quis aliquid voluptatum id praesentium laudantium debitis eligendi numquam eaque laborum odit repellendus quod maiores. Ut cumque praesentium, nihil qui dignissimos reprehenderit voluptates.</p>
+        <p>Saepe omnis, laboriosam nesciunt corrupti necessitatibus odit. Optio porro suscipit architecto harum reiciendis sit, sunt ratione unde iusto. Laborum quis aliquid eaque aspernatur porro dicta voluptatum id molestias repellendus debitis!</p>
+        <div class="back"><a href="#top">▲ 상단으로 돌아가기</a></div>
+    </section><section id="item4" class="item">
+        <h2>Resume</h2>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum eius dolores non assumenda ipsam repellat officiis ea illum voluptate ullam? Delectus omnis natus sequi blanditiis modi labore reprehenderit explicabo officia?</p>
+        <p>Animi, asperiores corrupti ut temporibus impedit quaerat illum sapiente debitis consequuntur. Animi, fugiat quod illo, ratione, numquam quos molestias et praesentium voluptate dolorum veniam nostrum repellat omnis magni! Praesentium, quasi!</p>
+        <p>Nihil nisi esse, facere quas autem eos dicta voluptatum quibusdam, alias, impedit explicabo iusto voluptates qui aspernatur eaque! Veritatis quas iste debitis, repellat harum asperiores obcaecati officia magnam soluta adipisci.</p>
+        <p>Neque porro atque adipisci sint deleniti ea qui sed eos delectus distinctio non quia fuga omnis autem obcaecati, soluta animi dolorum aliquam hic voluptatum! Illo cum tenetur autem maiores optio.</p>
+        <p>Voluptates, voluptatem. Aut error doloremque optio asperiores veniam amet laborum, ducimus deleniti accusamus suscipit dolorem facere ullam similique cum ipsam nam ea architecto non corrupti reiciendis. Quis sequi voluptas quia?</p>
+        <p>Dolore, reprehenderit eum molestiae praesentium ex ad magnam quaerat corrupti eos nemo accusantium ipsum sapiente sed magni delectus doloremque laborum mollitia vero labore nihil aspernatur, odit a autem! Iusto, dolorum!</p>
+        <p>Sed ab eaque ullam, similique repellendus rerum placeat quia enim iure totam minus illo laborum sit delectus inventore hic ipsam illum. Praesentium aspernatur unde adipisci reiciendis, consequuntur ducimus voluptates in?</p>
+        <p>Adipisci sapiente laboriosam voluptatibus maiores est enim laborum voluptate tempora, minima ipsum rem expedita architecto dicta velit suscipit ullam obcaecati iure sit eligendi porro quos repellendus error. Perspiciatis, eos doloribus!</p>
+        <p>Dolor at ea adipisci animi a, provident quis aliquid voluptatum id praesentium laudantium debitis eligendi numquam eaque laborum odit repellendus quod maiores. Ut cumque praesentium, nihil qui dignissimos reprehenderit voluptates.</p>
+        <p>Saepe omnis, laboriosam nesciunt corrupti necessitatibus odit. Optio porro suscipit architecto harum reiciendis sit, sunt ratione unde iusto. Laborum quis aliquid eaque aspernatur porro dicta voluptatum id molestias repellendus debitis!</p>
+        <div class="back"><a href="#top">▲ 상단으로 돌아가기</a></div>
+    </section><section id="item5" class="item">
+        <h2>Education</h2>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum eius dolores non assumenda ipsam repellat officiis ea illum voluptate ullam? Delectus omnis natus sequi blanditiis modi labore reprehenderit explicabo officia?</p>
+        <p>Animi, asperiores corrupti ut temporibus impedit quaerat illum sapiente debitis consequuntur. Animi, fugiat quod illo, ratione, numquam quos molestias et praesentium voluptate dolorum veniam nostrum repellat omnis magni! Praesentium, quasi!</p>
+        <p>Nihil nisi esse, facere quas autem eos dicta voluptatum quibusdam, alias, impedit explicabo iusto voluptates qui aspernatur eaque! Veritatis quas iste debitis, repellat harum asperiores obcaecati officia magnam soluta adipisci.</p>
+        <p>Neque porro atque adipisci sint deleniti ea qui sed eos delectus distinctio non quia fuga omnis autem obcaecati, soluta animi dolorum aliquam hic voluptatum! Illo cum tenetur autem maiores optio.</p>
+        <p>Voluptates, voluptatem. Aut error doloremque optio asperiores veniam amet laborum, ducimus deleniti accusamus suscipit dolorem facere ullam similique cum ipsam nam ea architecto non corrupti reiciendis. Quis sequi voluptas quia?</p>
+        <p>Dolore, reprehenderit eum molestiae praesentium ex ad magnam quaerat corrupti eos nemo accusantium ipsum sapiente sed magni delectus doloremque laborum mollitia vero labore nihil aspernatur, odit a autem! Iusto, dolorum!</p>
+        <p>Sed ab eaque ullam, similique repellendus rerum placeat quia enim iure totam minus illo laborum sit delectus inventore hic ipsam illum. Praesentium aspernatur unde adipisci reiciendis, consequuntur ducimus voluptates in?</p>
+        <p>Adipisci sapiente laboriosam voluptatibus maiores est enim laborum voluptate tempora, minima ipsum rem expedita architecto dicta velit suscipit ullam obcaecati iure sit eligendi porro quos repellendus error. Perspiciatis, eos doloribus!</p>
+        <p>Dolor at ea adipisci animi a, provident quis aliquid voluptatum id praesentium laudantium debitis eligendi numquam eaque laborum odit repellendus quod maiores. Ut cumque praesentium, nihil qui dignissimos reprehenderit voluptates.</p>
+        <p>Saepe omnis, laboriosam nesciunt corrupti necessitatibus odit. Optio porro suscipit architecto harum reiciendis sit, sunt ratione unde iusto. Laborum quis aliquid eaque aspernatur porro dicta voluptatum id molestias repellendus debitis!</p>
+        <div class="back"><a href="#top">▲ 상단으로 돌아가기</a></div>
+    </section>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+
+        $("#btn1").click(function() {
+            // obj.scrollTop()
+            //$(document).scrollTop(2000);
+            $("html,body").animate({
+                scrollTop: 2000
+            }, 1000);
+        })
+
+        $("#menu > span").click(function() {
+            // event.srcElement.dataset["item"] : DOM
+            // $(this).data("item") : javaScript
+
+            // alert($(this).data("item"));
+            // alert($(this).data("item").position().top); : 문자열이어서 포지션함수 사용할 수 없다.
+            // alert($("#" + $(this).data("item")).position().top);
+
+            $("html,body").animate({
+                scrollTop: $("#" + $(this).data("item")).position().top + 20
+            }, 1000);
+        });
+
+        $(".item > .back > a").click(function() {
+
+            // <a> 본연의 기능을 제거
+            event.preventDefault();
+
+            $("html,body").animate({
+                scrollTop: 0
+            }, 1000);
+
+        });
+
+        var flag = false;
+        $(document).scroll(function() {
+
+            // 메뉴가 시야에서 사라지는 순간 -> 메뉴를 붙박이로 만들기
+            if ($(document).scrollTop() > $("#menu").position().top) {
+                // alert();
+                if (!flag) {
+                    $("#menu").css({
+                        position: "fixed",
+                        top: -$("#menu").outerHeight(),
+                        bottom: ""
+                    });
+                    $("#menu").animate({
+                        top: "0px"
+                    }, 500, function() {
+                        // alert();
+                        flag = true;
+                    });
+                }
+
+                // console.log($("#menu").css("top"));
+            }
+
+            // 상단 헤더가(top이) 눈에 보일때 쯤
+            if ($(document).scrollTop() <= $("#top").outerHeight() - $("#menu").outerHeight()) {
+                // alert();
+                $("#menu").css({
+                    position: "absolute",
+                    top:"",
+                    bottom: "0px"
+                });
+                flag = false;
+            }
+
+        });
+
+    </script>
+</body>
+</html>
